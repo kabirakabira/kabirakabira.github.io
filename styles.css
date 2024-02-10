@@ -1,0 +1,567 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f6fefb;
+    padding-bottom: 30px;
+}
+
+@font-face {
+    font-family: "Space Mono";
+    src: url('fonts/Space_Mono/SpaceMono-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Neue Machina";
+    src: url("fonts/NeueMachina/NeueMachina-Ultrabold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url("fonts/Lato/Lato-Light.ttf");
+}
+
+
+/* START HEADER ELEMENTS STYLING */
+
+.kj-header {
+    background-color: #f6fefb;
+    padding: 30px 0px;
+}
+
+.kj-header .container {
+    margin: auto;
+    width: 90%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@media only screen and (min-width: 601px) {
+
+    .hamburger {
+        display: none;
+    }
+
+    .navitems-list {
+        list-style: none;
+    }
+
+    .navitems-list li {
+        margin-left: 30px;
+        width: min-content;
+        display: inline-block;
+        font-family: "Lato";
+        font-size: 20px;
+    }
+
+    .navitems-list li:last-child {
+        margin: 0px;
+        position: absolute;
+        right: 60px;
+        top: 27px;
+    }
+
+    a.menu-item,
+    a.menu-item:link,
+    a.menu-item:visited {
+        color: #000001;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    .navitems-list a.menu-item:hover {
+        color: #073b3a;
+        border-radius: 3px;
+        text-shadow: 0px 0px 10px #a4a4a4;
+    }
+
+    .navitems-list a.resume-btn,
+    a.resume-btn:link,
+    a.resume-btn:visited {
+        padding: 10px 12px;
+        text-decoration: none;
+        background-color: #0b6e4f;
+        color: #fffff0;
+        font-family: "Lato";
+        font-size: 20px;
+        border-radius: 3px;
+        border: none;
+        opacity: 0.7;
+    }
+
+    .navitems-list a.resume-btn:hover {
+        opacity: 1;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .navitems-list {
+        list-style: none;
+    }
+
+    .navitems-list li {
+        margin-left: 10px;
+        width: min-content;
+        display: inline-block;
+        font-family: "Lato";
+        font-size: 12px;
+    }
+
+    .navitems-list li:last-child {
+        margin: 0px;
+        position: absolute;
+        right: 20px;
+        top: 32px;
+    }
+
+    a.menu-item,
+    a.menu-item:link,
+    a.menu-item:visited {
+        color: #000001;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    .navitems-list a.resume-btn,
+    a.resume-btn:link,
+    a.resume-btn:visited {
+        padding: 10px 12px;
+        text-decoration: none;
+        background-color: #0b6e4f;
+        color: #fffff0;
+        font-family: "Lato";
+        font-size: 12px;
+        border-radius: 3px;
+        border: none;
+    }
+
+}
+
+/* END HEADER ELEMENTS STYLING */
+
+
+
+/* START INDEX.html STYLING */
+
+p.index-intro1 {
+    padding-top: 40px;
+    font-family: "Karla";
+    font-size: 15px;
+    color: #000001;
+    text-align: center;
+}
+
+p.index-intro2 {
+    padding-top: 20px;
+    font-family: "Karla";
+    font-size: 40px;
+    color: #000001;
+    text-align: center;
+}
+
+span.index-intro2-1 {
+    padding-top: 20px;
+    font-family: "Karla";
+    font-size: 40px;
+    color: #0b6e4f;
+    text-align: center;
+}
+
+p.index-intro3 {
+    padding-top: 40px;
+    font-family: "Karla";
+    font-size: 25px;
+    color: #000001;
+    text-align: center;
+}
+
+p.index-intro4 {
+    padding-top: 40px;
+    font-family: "Karla";
+    font-size: 50px;
+    color: #000001;
+    text-align: center;
+}
+
+/* INDEX PAGE CARD */
+@media only screen and (min-width: 901px) {
+
+    .index-cardcontainer {
+        padding-top: 25px;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .index-cardimgcontainer {
+        padding-right: 20px;
+        width: 40%;
+        text-align: right;
+    }
+
+    .index-cardtxtcontainer {
+        padding-left: 20px;
+        width: 40%;
+        text-align: left;
+        word-wrap: break-word;
+    }
+
+    .index-cardimg {
+        max-width: 80%;
+        height: auto;
+    }
+
+    p.index-cardtitle {
+        width: 75%;
+        font-family: "Lato";
+        font-size: 30px;
+        color: #0b6e4f;
+    }
+
+    p.index-carddesc {
+        padding-bottom: 20px;
+        width: 75%;
+        font-family: "Karla";
+        font-weight: 100;
+        font-size: 20px;
+        color: #000001;
+    }
+
+    .index-cardbutton,
+    .index-cardbutton:link,
+    .index-cardbutton:visited {
+        padding: 10px 12px;
+        text-decoration: none;
+        background-color: #0b6e4f;
+        color: #fffff0;
+        font-family: "Lato";
+        font-size: 20px;
+        border-radius: 3px;
+        border: none;
+        opacity: 0.7;
+    }
+
+    .index-cardbutton:hover {
+        opacity: 1;
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+    .index-cardcontainer {
+        padding-top: 20px;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .index-cardimgcontainer {
+        text-align: center;
+    }
+
+    .index-cardimg {
+        width: 90%;
+        height: auto;
+    }
+
+    .index-cardtxtcontainer {
+        text-align: center;
+    }
+
+    p.index-cardtitle {
+        padding-top: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-family: "Lato";
+        font-size: 20px;
+        color: #0b6e4f;
+    }
+
+    p.index-carddesc {
+        padding-top: 5px;
+        padding-bottom: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-family: "Karla";
+        font-weight: 100;
+        font-size: 15px;
+        color: #000001;
+    }
+
+    .index-cardbutton,
+    .index-cardbutton:link,
+    .index-cardbutton:visited {
+        padding: 10px 12px;
+        text-decoration: none;
+        background-color: #0b6e4f;
+        color: #fffff0;
+        font-family: "Lato";
+        font-size: 12px;
+        border-radius: 3px;
+        border: none;
+    }
+
+}
+
+/* END INDEX.html STYLING */
+
+
+
+/* START PROJECTS_BASE.html STYLING */
+
+@media only screen and (min-width: 901px) {
+
+    .projects-cardgrid {
+        padding-left: 12vw;
+        padding-right: 12vw;
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 100px;
+    }
+
+    .projects-cardcontainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .projects-cardimgcontainer {
+        text-align: left;
+    }
+
+    .projects-cardtxtcontainer {
+        padding-top: 5px;
+        text-align: left;
+    }
+
+    .projects-cardimg {
+        min-width: 50%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    p.projects-carddate {
+        font-family: "Lato";
+        font-size: 15px;
+        font-weight: 600;
+        color: #000001;
+    }
+
+    p.projects-cardtitle {
+        padding-top: 8px;
+        font-family: "Lato";
+        font-size: 30px;
+        color: #0b6e4f;
+    }
+
+    p.projects-carddesc {
+        padding-top: 8px;
+        padding-bottom: 20px;
+        font-family: "Karla";
+        font-weight: 100;
+        font-size: 15px;
+        color: #000001;
+    }
+
+    .projects-cardbutton,
+    .projects-cardbutton:link,
+    .projects-cardbutton:visited {
+        padding: 10px 12px;
+        text-decoration: none;
+        background-color: #0b6e4f;
+        color: #fffff0;
+        font-family: "Lato";
+        font-size: 20px;
+        border-radius: 3px;
+        border: none;
+        opacity: 0.7;
+    }
+
+    .projects-cardbutton:hover {
+        opacity: 1;
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+    .projects-cardgrid {
+        padding-left: 12vw;
+        padding-right: 12vw;
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 100px;
+    }
+
+    .projects-cardcontainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .projects-cardimgcontainer {
+        text-align: left;
+    }
+
+    .projects-cardtxtcontainer {
+        padding-top: 5px;
+        text-align: left;
+    }
+
+    .projects-cardimg {
+        min-width: 50%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    p.projects-carddate {
+        font-family: "Lato";
+        font-size: 15px;
+        font-weight: 600;
+        color: #000001;
+    }
+
+    p.projects-cardtitle {
+        padding-top: 8px;
+        font-family: "Lato";
+        font-size: 30px;
+        color: #0b6e4f;
+    }
+
+    p.projects-carddesc {
+        padding-top: 8px;
+        padding-bottom: 20px;
+        font-family: "Karla";
+        font-weight: 100;
+        font-size: 15px;
+        color: #000001;
+    }
+
+    .projects-cardbutton,
+    .projects-cardbutton:link,
+    .projects-cardbutton:visited {
+        padding: 10px 12px;
+        text-decoration: none;
+        background-color: #0b6e4f;
+        color: #fffff0;
+        font-family: "Lato";
+        font-size: 20px;
+        border-radius: 3px;
+        border: none;
+    }
+    
+}
+
+/* END PROJECTS_BASE.html STYLING */
+
+
+
+/* START PROJECT PAGE STYLING - FOR ALL PROJECT PAGES EXCEPT BASE */
+
+.projectpage-container {
+    text-align: center;
+}
+
+.projectpage-titlewrapper{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.projectpage-txtwrapper{
+    margin-left: 20vw;
+    margin-right: 20vw;
+    /* margin-left: auto;
+    margin-right: auto; */
+    text-align: center;
+}
+
+.projectpage-imgcontainer {
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.projectpage-date {
+    padding-top: 20px;
+    text-align: center;
+    font-family: "Lato";
+    font-size: 20px;
+    font-weight: 600;
+    color: #000001;
+}
+
+.projectpage-title {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-family: "Lato";
+    font-size: 40px;
+    font-weight: 100;
+    color: #0b6e4f;
+}
+
+.projectpage-bodypara {
+    text-align: left;
+    padding-bottom: 10px;
+    font-family: "Karla";
+    font-size: 20px;
+    font-weight: 100;
+    color: #000001;
+}
+
+.projectpage-img {
+    min-width: 30%;
+    max-width: 100%;
+    height: auto;
+}
+
+.projectpage-imgcaption {
+    padding-bottom: 10px;
+    font-family: "Lato";
+    font-size: 15px;
+    color: #000001;
+}
+
+.projectpage-studybutton,
+.pprojectpage-studybutton:link,
+.projectpage-studybutton:visited {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 12px;
+    text-decoration: none;
+    background-color: #0b6e4f;
+    color: #fffff0;
+    font-family: "Lato";
+    font-size: 20px;
+    border-radius: 3px;
+    border: none;
+}
+
+.projectpage-githubbutton,
+.pprojectpage-githubbutton:link,
+.projectpage-githubbutton:visited {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 12px;
+    text-decoration: none;
+    background-color: #0b6e4f;
+    color: #fffff0;
+    font-family: "Lato";
+    font-size: 20px;
+    border-radius: 3px;
+    border: none;
+}
+
+/* END PROJECT PAGE STYLING - FOR ALL PROJECT PAGES EXCEPT BASE */
