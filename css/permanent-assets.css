@@ -1,0 +1,142 @@
+/* LATO FONT */
+@font-face {
+    font-family: "Lato";
+    src: url('/resources/fonts/Lato/Lato-Black.ttf') format("truetype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* YESEVAONE FONT */
+@font-face {
+    font-family: "YesevaOne";
+    src: url('/resources/fonts/YesevaOne/YesevaOne-Regular.ttf') format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* JosefinSans FONT */
+@font-face {
+    font-family: "JosefinSans";
+    src: url('/resources/fonts/JosefinSans/static/JosefinSans-Light.ttf') format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "JosefinSans";
+    src: url('/resources/fonts/JosefinSans/static/JosefinSans-LightItalic.ttf') format("truetype");
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "JosefinSans";
+    src: url('/resources/fonts/JosefinSans/static/JosefinSans-Regular.ttf') format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "JosefinSans";
+    src: url('/resources/fonts/JosefinSans/static/JosefinSans-Italic.ttf') format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "JosefinSans";
+    src: url('/resources/fonts/JosefinSans/static/JosefinSans-Medium.ttf') format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "JosefinSans";
+    src: url('/resources/fonts/JosefinSans/static/JosefinSans-MediumItalic.ttf') format("truetype");
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "JosefinSans";
+    src: url('/resources/fonts/JosefinSans/static/JosefinSans-Bold.ttf') format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "JosefinSans";
+    src: url('/resources/fonts/JosefinSans/static/JosefinSans-BoldItalic.ttf') format("truetype");
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* COLORS */
+:root {
+    --platinum: #d8dbe2;
+    --powderblue: #a9bcd0;
+    --moonstone: #58a4b0;
+    --charcoal: #373f51;
+    --eerieblack: #1b1b1e;
+}
+
+
+/* Basic Elements */
+h1 {
+    font-family: "YesevaOne";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    text-decoration: none;
+    color: var(--charcoal);
+}
+
+h2 {
+    font-family: "YesevaOne";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    text-decoration: none;
+    color: var(--moonstone);
+}
+
+p {
+    font-family: "JosefinSans";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--eerieblack);
+}
+
+/* Top Nav Styling */
+.main-menu-wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.main-menu {
+    list-style-type: none;
+    align-items: center;
+}
+
+.main-menu li {
+    padding: 0px 30px;
+    display: inline-block;
+}
+
+.main-menu-item:link,
+.main-menu-item:visited {
+    font-family: "Lato";
+    font-weight: 900;
+    font-style: normal;
+    font-size: 30px;
+    text-decoration: none;
+    color: var(--charcoal);
+    opacity: 0.8;
+}
+
+.main-menu-item:hover {
+    color: var(--charcoal);
+    opacity: 1.0;
+}

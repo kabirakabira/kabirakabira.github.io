@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Kabir Jain</title>
+  <link rel="stylesheet" href="/css/permanent-assets.css">
+  <link rel="stylesheet" href="/css/style-projects.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+
+  <!-- Insert Navigation Bar -->
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("/resources/navbar.html");
+    });
+  </script>
+
+  <!-- Page elements -->
+
+  <div class="cardgrid">
+
+    <!-- Project: Census API -->
+    <div class="card">
+      <div class="card-image">
+        <img src="/images/project-thumbnails/census-api.jpeg" class="project-image">
+      </div>
+      <div class="card-text">
+        <p class="card-text-date"> 08/2023 </p>
+        <p class="card-text-title"> American Community Survey API Frontend </p>
+        <p class="card-text-description"> Pulling American Community Survey data from the Census Bureau is unnecessarily
+          convoluted and time-consuming, especially if you don't have experience with APIs. Needing to pull multiple
+          years or geographies exponentially modifies the required time and effort. Yet, it's something researchers need
+          to do for nearly every project. Using the Census API, I created a front-end application that allows users to
+          pull multiple selected variables for multiple geographies at the same time. </p>
+      </div>
+      <a href="https://kjain-aecom.shinyapps.io/census_api/" class="card-button" target="_blank">Click Here</a>
+    </div>
+
+    <!-- Project: Drive Time Demographics -->
+    <div class="card">
+      <div class="card-image">
+        <img src="/images/project-thumbnails/demographics-in-reach.png" class="project-image">
+      </div>
+      <div class="card-text">
+        <p class="card-text-date"> 06/2023 </p>
+        <p class="card-text-title"> Demographics in Reach (DiR) </p>
+        <p class="card-text-description"> For some projects, Census geographies (counties, tracts, etc) might not be
+          optimal. This application takes a user-inputted point (XY coordinates) and pulls a set of demographic data for
+          the area within a specified walk or drive time. This application uses the OSRM library to create an isochrone,
+          then intersects the isochrone with Census tracts and pulls and summarizes demographic data for the area
+          covered by the isochrone. The data can be downloaded as a geopackage. </p>
+      </div>
+      <a href="https://kjain-aecom.shinyapps.io/dir_demographics_in_reach/" class="card-button" target="_blank">Click Here</a>
+    </div>
+
+    <!-- Project: Census Geocoder -->
+    <div class="card">
+      <div class="card-image">
+        <img src="/images/project-thumbnails/census-api.jpeg" class="project-image">
+      </div>
+      <div class="card-text">
+        <p class="card-text-date"> 04/2023 </p>
+        <p class="card-text-title"> Census Geocoder Frontend </p>
+        <p class="card-text-description"> This application takes a .csv containing address information and spits out a
+          geocoded dataframe with XY coordinates that can be mapped easily. Most geocoding services require some sort of
+          membership / plan (such as through ESRI), but this is free. </p>
+      </div>
+      <a href="https://kjain-aecom.shinyapps.io/lost_and_found/" class="card-button" target="_blank">Click Here</a>
+    </div>
+
+    <!-- Project: Capital Punishment Revisited -->
+    <div class="card">
+      <div class="card-image">
+        <img src="/images/project-thumbnails/deterrent-effect-revisited.png" class="project-image">
+      </div>
+      <div class="card-text">
+        <p class="card-text-date"> 12/2020 </p>
+        <p class="card-text-title"> The Deterrent Effect Revisited: Effects of Capital Punishment on Violent Crime Rates
+        </p>
+        <p class="card-text-description"> I revisited my earlier project on the same topic, with an updated (read:
+          better) methodology and research design. With this design, I utilize individual executions in U.S. States as
+          an exogenous shock to crime rates. </p>
+      </div>
+      <a href="/resources/docs/cappun2.pdf" class="card-button" target="_blank">Click Here</a>
+    </div>
+
+    <!-- Project: Modeling Trends in Surface Temperature -->
+    <div class="card">
+      <div class="card-image">
+        <img src="/images/project-thumbnails/mbh-replication.png" class="project-image">
+      </div>
+      <div class="card-text">
+        <p class="card-text-date"> 10/2020 </p>
+        <p class="card-text-title"> The Effects of Improper Standardization on Modeling Trends in Suuface Temperature
+        </p>
+        <p class="card-text-description"> My team and I were interesting in the seminal work by Mannes, Bradley, and
+          Hughes (1998) on global warming. Their work has been criticized for improper use of statistical methodolgy,
+          and my team replicated the study with modern methods to highlight the impacts and importance of slight changes
+          in methodologies. </p>
+      </div>
+      <a href="/resources/docs/mbh.pdf" class="card-button" target="_blank">Click Here</a>
+    </div>
+
+    <!-- Project: BP Oil Spill -->
+    <div class="card">
+      <div class="card-image">
+        <img src="/images/project-thumbnails/bp-oil-spill.png" class="project-image">
+      </div>
+      <div class="card-text">
+        <p class="card-text-date"> 03/2020 </p>
+        <p class="card-text-title"> British Petroleum Oil Spill: A Study of Cumulative Abnormal Returns
+        </p>
+        <p class="card-text-description"> My team and I were interested in the magnitudes of the losses British
+          Petroleum and several other North American oil corporations suffered over the course of the 2010 BP Oil Spill
+          fiasco. </p>
+      </div>
+      <a href="/resources/docs/bpoilspill.pdf" class="card-button" target="_blank">Click Here</a>
+    </div>
+
+    <!-- Project: Deterrent Effect -->
+    <div class="card">
+      <div class="card-image">
+        <img src="/images/project-thumbnails/deterrent-effect.png" class="project-image">
+      </div>
+      <div class="card-text">
+        <p class="card-text-date"> 12/2019 </p>
+        <p class="card-text-title"> The Deterrent Effect of Capital Punishment on Violent Crime Rates
+        </p>
+        <p class="card-text-description"> A study to determine the existence of the supposed deterrent effect of capital
+          punishment on violent crimes in the U.S. I utilize the abolition of capital punishment as an exogenous shock
+          to crime rates. </p>
+      </div>
+      <a href="/resources/docs/cappun1.pdf" class="card-button" target="_blank">Click Here</a>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

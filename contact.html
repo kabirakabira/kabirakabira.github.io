@@ -4,30 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Kabir Jain</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/css/permanent-assets.css">
+    <link rel="stylesheet" href="/css/style-contact.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-
 <body>
 
-    <!-- header start -->
-    <header class="kj-header">
-        <div class="container">
-            <nav class="navbar">
-                <ul class="navitems-list">
-                    <li><a href="index.html" class="menu-item">HOME</a></li>
-                    <li><a href="projects_base.html" class="menu-item">PROJECTS</a></li>
-                    <li><a href="contact.html" class="menu-item">CONTACT</a></li>
-                    <li><a href="" target="_blank" title="RESUME" class="resume-btn">RESUME</a></li>
-                    <!-- <li><a href = "index.html"><button class="resume-btn">RESUME</button></a></li> -->
-                </ul>
+    <!-- Insert Navigation Bar -->
+    <div id="nav-placeholder"></div>
+    <script>
+    $(function(){
+      $("#nav-placeholder").load("/resources/navbar.html");
+    });
+    </script>
 
-            </nav>
-        </div>
-    </header>
-    <!-- header end -->
-
-
-
+    <!-- Page elements -->
+    
 </body>
-
 </html>
