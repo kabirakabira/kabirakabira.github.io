@@ -1,0 +1,49 @@
+.text-container {
+    padding-top: 50px;
+    width: 100vw;
+    text-align: center;;
+}
+
+.email:link,
+.email:visited {
+    font-family: "Lato";
+    font-weight: 900;
+    font-style: normal;
+    font-size: 30px;
+    text-decoration: none;
+    color: var(--moonstone);
+    opacity: 1.0;
+}
+
+.email:hover {
+    color: var(--eerieblack);
+    transition: 1s;
+}
+
+.iconlist {
+    padding-top: 50px;
+    width: 100vw;
+    text-align: center;
+}
+
+.fa-github {
+    font-size: 100px;
+    padding-right: 10px;
+    color: var(--moonstone);
+}
+
+.fa-github:hover {
+    color: var(--eerieblack);
+    transition: 1s;
+}
+
+.fa-linkedin {
+    font-size: 100px;
+    padding-left: 10px;
+    color: var(--moonstone)
+}
+
+.fa-linkedin:hover {
+    color: var(--eerieblack);
+    transition: 1s;
+}

@@ -110,6 +110,11 @@ p {
 }
 
 /* Top Nav Styling */
+
+/* For non-mobile screens */
+
+@media only screen and (min-width: 600px) {
+
 .main-menu-wrapper {
     width: 100%;
     text-align: center;
@@ -139,4 +144,44 @@ p {
 .main-menu-item:hover {
     color: var(--charcoal);
     opacity: 1.0;
+}
+
+}
+
+
+@media only screen and (max-width: 599px) {
+
+    .main-menu-wrapper {
+        width: 100vw;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .main-menu {
+        margin-left: -50px;
+        list-style-type: none;
+        align-items: center;
+    }
+    
+    .main-menu li {
+        padding: 0px 10px;
+        display: inline-block;
+    }
+    
+    .main-menu-item:link,
+    .main-menu-item:visited {
+        font-family: "Lato";
+        font-weight: 900;
+        font-style: normal;
+        font-size: 15px;
+        text-decoration: none;
+        color: var(--charcoal);
+        opacity: 0.8;
+    }
+    
+    .main-menu-item:hover {
+        color: var(--charcoal);
+        opacity: 1.0;
+    }
+
 }

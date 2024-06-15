@@ -1,3 +1,6 @@
+
+@media only screen and (min-width: 600px) {
+
 .image-container {
     text-align: center;
 }
@@ -19,4 +22,33 @@
     justify-content: center;
     width: 80vw;
     margin: auto;
+}
+
+}
+
+@media only screen and (max-width: 599px) {
+
+    .image-container {
+        text-align: center;
+    }
+    
+    .headshot {
+        max-width: 200px;
+        border-radius: 100px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .meme {
+        max-width: 90vw;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .text-container {
+        text-align: center;
+        justify-content: center;
+        width: 80vw;
+        margin: auto;
+    }
+
 }
