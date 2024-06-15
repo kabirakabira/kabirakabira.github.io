@@ -1,6 +1,13 @@
 /* LATO FONT */
 @font-face {
     font-family: "Lato";
+    src: url('/resources/fonts/Lato/Lato-Regular.ttf') format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
     src: url('/resources/fonts/Lato/Lato-Black.ttf') format("truetype");
     font-weight: 900;
     font-style: normal;
