@@ -75,20 +75,10 @@
         color: var(--eerieblack);
     }
 
-    .fa-envelope:hover {
-        color: var(--burntorange);
-        transition: 1s;
-    }
-
     .fa-github {
         font-size: 50px;
         padding-right: 25px;
         color: var(--eerieblack);
-    }
-
-    .fa-github:hover {
-        color: var(--burntorange);
-        transition: 1s;
     }
 
     .fa-linkedin {
@@ -97,19 +87,10 @@
         color: var(--eerieblack);
     }
 
-    .fa-linkedin:hover {
-        color: var(--burntorange);
-        transition: 1s;
-    }
-
     .fa-file-pdf {
         font-size: 50px;
         padding-right: 0px;
         color: var(--eerieblack);
     }
 
-    .fa-file-pdf:hover {
-        color: var(--burntorange);
-        transition: 1s;
-    }
 }

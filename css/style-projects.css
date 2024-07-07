@@ -108,11 +108,4 @@
         text-decoration: none;
     }
 
-    .card-button:hover {
-        color: var(--eerieblack);
-        border: 2px dashed;
-        transition: 0.5s;
-    }
-
-
 }
