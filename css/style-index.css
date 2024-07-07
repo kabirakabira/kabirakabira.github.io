@@ -1,54 +1,134 @@
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 800px) {
 
-.image-container {
-    text-align: center;
-}
-
-.headshot {
-    max-width: 200px;
-    border-radius: 100px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.meme {
-    max-width: 500px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.text-container {
-    text-align: center;
-    justify-content: center;
-    width: 80vw;
-    margin: auto;
-}
-
-}
-
-@media only screen and (max-width: 599px) {
-
-    .image-container {
+    .text-container{
         text-align: center;
+        justify-content: center;
+        width: 50vw;
+        margin: auto;
     }
-    
-    .headshot {
-        max-width: 200px;
-        border-radius: 100px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    .plaintext-0 {
+        font-family: "CourierPrime";
+        font-size: 40px;
+        color: var(--eerieblack);
     }
-    
-    .meme {
-        max-width: 90vw;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    .plaintext-1 {
+        font-family: "CourierPrime";
+        font-size: 25px;
+        color: var(--eerieblack);
     }
-    
-    .text-container {
+
+    .plaintext-2 {
+        font-family: "CourierPrime";
+        font-size: 15px;
+        color: var(--eerieblack);
+    }
+
+    .card-header {
+        font-family: "CourierPrime";
+        font-size: 10px;
+        color: var(--eerieblack);
+    }
+
+    .recent-title {
+        font-family: "Futura";
+        font-weight: 700;
+        font-size: 30px;
+        color: var(--eerieblack);
+    }
+
+    .recent-desc {
+        font-family: "CourierPrime";
+        font-size: 15px;
+        padding-bottom: 20px;
+        color: var(--eerieblack);
+    }
+
+    .recent-button,
+    .recent-button:link,
+    .recent-button:visited {
+        width: max-content;
+        padding: 8px 10px;
+        margin: auto;
+        background-color: var(--burntorange);
+        font-family: "CourierPrime";
+        color: ivory;
+        text-decoration: none;
+    }
+
+    .recent-button:hover {
+        color: var(--eerieblack);
+        border: 2px dashed;
+        transition: 0.5s;
+    }
+
+}
+
+@media only screen and (max-width: 799px) {
+
+    .text-container{
         text-align: center;
         justify-content: center;
         width: 80vw;
         margin: auto;
     }
 
+    .plaintext-0 {
+        font-family: "CourierPrime";
+        font-size: 40px;
+        color: var(--eerieblack);
+    }
+
+    .plaintext-1 {
+        font-family: "CourierPrime";
+        font-size: 25px;
+        color: var(--eerieblack);
+    }
+
+    .plaintext-2 {
+        font-family: "CourierPrime";
+        font-size: 15px;
+        color: var(--eerieblack);
+    }
+
+    .card-header {
+        font-family: "CourierPrime";
+        font-size: 10px;
+        color: var(--eerieblack);
+    }
+
+    .recent-title {
+        font-family: "Futura";
+        font-weight: 700;
+        font-size: 30px;
+        color: var(--eerieblack);
+    }
+
+    .recent-desc {
+        font-family: "CourierPrime";
+        font-size: 15px;
+        padding-bottom: 20px;
+        color: var(--eerieblack);
+    }
+
+    .recent-button,
+    .recent-button:link,
+    .recent-button:visited {
+        width: max-content;
+        padding: 8px 10px;
+        margin: auto;
+        background-color: var(--burntorange);
+        font-family: "CourierPrime";
+        color: ivory;
+        text-decoration: none;
+        margin-bottom: 100px;
+    }
+
+    .recent-button:hover {
+        color: var(--eerieblack);
+        border: 2px dashed;
+        transition: 0.5s;
+    }
 }

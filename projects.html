@@ -22,145 +22,133 @@
 
   <!-- Page elements -->
 
-  <div class="container">
-    <a href="https://github.com/kabirakabira/kabirakabira.github.io" class="card-button" target="_blank">Source Code for
-      this Website</a>
+  <br>
+  <br>
+
+  <!-- CLASSIFYING OPP ZONES USING ML -->
+  <div class="card">
+    <div class="text-container">
+      <p class="card-title">Classifying Opportunity Zones using ML Algorithms</p>
+      <p class="card-date">07/2024</p>
+      <p class="card-desc">I tested the capability of logistic, knn and random forest classification models to be able
+        to predict a census tract's designation as a Qualified Opportunity Zone based on 2015 American Community Survey
+        data. Spoiler: The models didn't do too well, but it was a fun learning experience. It also revealed that not
+        all States followed similar guidelines when nominating Census Tracts for QOZ designation.</p>
+      <a href="https://rpubs.com/kabirakabira/1202089" target="_blank" class="card-button">read more</a>
+    </div>
   </div>
 
-  <div class="cardgrid">
+  <br>
 
-    <!-- Project: Opportunity Zone Classification -->
-    <div class="card">
-      <div class="card-image">
-        <img src="/images/project-thumbnails/census-api.jpeg" class="project-image">
-      </div>
-      <div class="card-text">
-        <p class="card-text-date"> 07/2024 </p>
-        <p class="card-text-title"> Classifying Opportunity Zones with ML </p>
-        <p class="card-text-description">I tested the capability of logistic, knn and random forest classification to be
-          able to predict a census tract's designation as a Qualified Opportunity Zone based on 2015 American Community
-          Survey data. Spoiler: The models didn't do too well, but it was a fun learning experience. It also reveals
-          that not all States followed similar guidelines when nominating Census Tracts for QOZ designation.</p>
-      </div>
-      <a href="https://rpubs.com/kabirakabira/1202089" class="card-button" target="_blank">Read More</a>
+  <!-- CENSUS API -->
+  <div class="card">
+    <div class="text-container">
+      <p class="card-title">American Community Survey API Frontend</p>
+      <p class="card-date">08/2023</p>
+      <p class="card-desc">Pulling American Community Survey data from the Census Bureau is unnecessarily
+        convoluted and time-consuming, especially if you don't have experience with APIs. Needing to pull multiple
+        years or geographies exponentially modifies the required time and effort. Yet, it's something researchers need
+        to do for nearly every project. Using the Census API, I created a front-end application that allows users to
+        pull multiple selected variables for multiple geographies at the same time.</p>
+      <a href="https://kjain-aecom.shinyapps.io/census_api/" target="_blank" class="card-button">view app</a>
     </div>
-
-    <!-- Project: Census API -->
-    <div class="card">
-      <div class="card-image">
-        <img src="/images/project-thumbnails/census-api.jpeg" class="project-image">
-      </div>
-      <div class="card-text">
-        <p class="card-text-date"> 08/2023 </p>
-        <p class="card-text-title"> American Community Survey API Frontend </p>
-        <p class="card-text-description"> Pulling American Community Survey data from the Census Bureau is unnecessarily
-          convoluted and time-consuming, especially if you don't have experience with APIs. Needing to pull multiple
-          years or geographies exponentially modifies the required time and effort. Yet, it's something researchers need
-          to do for nearly every project. Using the Census API, I created a front-end application that allows users to
-          pull multiple selected variables for multiple geographies at the same time. </p>
-      </div>
-      <a href="https://kjain-aecom.shinyapps.io/census_api/" class="card-button" target="_blank">View App</a>
-    </div>
-
-    <!-- Project: Drive Time Demographics -->
-    <div class="card">
-      <div class="card-image">
-        <img src="/images/project-thumbnails/demographics-in-reach.png" class="project-image">
-      </div>
-      <div class="card-text">
-        <p class="card-text-date"> 06/2023 </p>
-        <p class="card-text-title"> Demographics in Reach (DiR) </p>
-        <p class="card-text-description"> For some projects, Census geographies (counties, tracts, etc) might not be
-          optimal. This application takes a user-inputted point (XY coordinates) and pulls a set of demographic data for
-          the area within a specified walk or drive time. This application uses the OSRM library to create an isochrone,
-          then intersects the isochrone with Census tracts and pulls and summarizes demographic data for the area
-          covered by the isochrone. The data can be downloaded as a geopackage. </p>
-      </div>
-      <a href="https://kjain-aecom.shinyapps.io/dir_demographics_in_reach/" class="card-button" target="_blank">View
-        App</a>
-    </div>
-
-    <!-- Project: Census Geocoder -->
-    <div class="card">
-      <div class="card-image">
-        <img src="/images/project-thumbnails/census-api.jpeg" class="project-image">
-      </div>
-      <div class="card-text">
-        <p class="card-text-date"> 04/2023 </p>
-        <p class="card-text-title"> Census Geocoder Frontend </p>
-        <p class="card-text-description"> This application takes a .csv containing address information and spits out a
-          geocoded dataframe with XY coordinates that can be mapped easily. Most geocoding services require some sort of
-          membership / plan (such as through ESRI), but this is free. </p>
-      </div>
-      <a href="https://kjain-aecom.shinyapps.io/lost_and_found/" class="card-button" target="_blank">View App</a>
-    </div>
-
-    <!-- Project: Capital Punishment Revisited -->
-    <div class="card">
-      <div class="card-image">
-        <img src="/images/project-thumbnails/deterrent-effect-revisited.png" class="project-image">
-      </div>
-      <div class="card-text">
-        <p class="card-text-date"> 12/2020 </p>
-        <p class="card-text-title"> The Deterrent Effect Revisited: Effects of Capital Punishment on Violent Crime Rates
-        </p>
-        <p class="card-text-description"> I revisited my earlier project on the same topic, with an updated (read:
-          better) methodology and research design. With this design, I utilize individual executions in U.S. States as
-          an exogenous shock to crime rates. </p>
-      </div>
-      <a href="/resources/docs/cappun2.pdf" class="card-button" target="_blank">Read More</a>
-    </div>
-
-    <!-- Project: Modeling Trends in Surface Temperature -->
-    <div class="card">
-      <div class="card-image">
-        <img src="/images/project-thumbnails/mbh-replication.png" class="project-image">
-      </div>
-      <div class="card-text">
-        <p class="card-text-date"> 10/2020 </p>
-        <p class="card-text-title"> The Effects of Improper Standardization on Modeling Trends in Surface Temperature
-        </p>
-        <p class="card-text-description"> My team and I were interesting in the seminal work by Mannes, Bradley, and
-          Hughes (1998) on global warming. Their work has been criticized for improper use of statistical methodolgy,
-          and my team replicated the study with modern methods to highlight the impacts and importance of slight changes
-          in methodologies. </p>
-      </div>
-      <a href="/resources/docs/mbh.pdf" class="card-button" target="_blank">Read More</a>
-    </div>
-
-    <!-- Project: BP Oil Spill -->
-    <div class="card">
-      <div class="card-image">
-        <img src="/images/project-thumbnails/bp-oil-spill.png" class="project-image">
-      </div>
-      <div class="card-text">
-        <p class="card-text-date"> 03/2020 </p>
-        <p class="card-text-title"> British Petroleum Oil Spill: A Study of Cumulative Abnormal Returns
-        </p>
-        <p class="card-text-description"> My team and I were interested in the magnitudes of the losses British
-          Petroleum and several other North American oil corporations suffered over the course of the 2010 BP Oil Spill
-          fiasco. </p>
-      </div>
-      <a href="/resources/docs/bpoilspill.pdf" class="card-button" target="_blank">Read More</a>
-    </div>
-
-    <!-- Project: Deterrent Effect -->
-    <div class="card">
-      <div class="card-image">
-        <img src="/images/project-thumbnails/deterrent-effect.png" class="project-image">
-      </div>
-      <div class="card-text">
-        <p class="card-text-date"> 12/2019 </p>
-        <p class="card-text-title"> The Deterrent Effect of Capital Punishment on Violent Crime Rates
-        </p>
-        <p class="card-text-description"> A study to determine the existence of the supposed deterrent effect of capital
-          punishment on violent crimes in the U.S. I utilize the abolition of capital punishment as an exogenous shock
-          to crime rates. </p>
-      </div>
-      <a href="/resources/docs/cappun1.pdf" class="card-button" target="_blank">Read More</a>
-    </div>
-
   </div>
+
+  <br>
+
+  <!-- DRIVE TIME DEMOGRAPHICS -->
+  <div class="card">
+    <div class="text-container">
+      <p class="card-title">Demographics in Reach</p>
+      <p class="card-date">06/2023</p>
+      <p class="card-desc">For some projects, Census geographies (counties, tracts, etc) might not be
+        optimal. This application takes a user-inputted point (XY coordinates) and pulls a set of demographic data for
+        the area within a specified walk or drive time. This application uses the OSRM library to create an isochrone,
+        then intersects the isochrone with Census tracts and pulls and summarizes demographic data for the area
+        covered by the isochrone. The data can be downloaded as a geopackage.</p>
+      <a href="https://kjain-aecom.shinyapps.io/dir_demographics_in_reach/" target="_blank" class="card-button">view app</a>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- CENSUS GEOCODER -->
+  <div class="card">
+    <div class="text-container">
+      <p class="card-title">Census Geocoder (Address-to-XY)</p>
+      <p class="card-date">04/2023</p>
+      <p class="card-desc">This application takes a .csv containing address information and spits out a
+        geocoded dataframe with XY coordinates that can be mapped easily. Most geocoding services require some sort of
+        membership / plan (such as through ESRI), but this is free.</p>
+      <a href="https://kjain-aecom.shinyapps.io/dir_demographics_in_reach/" target="_blank" class="card-button">view app</a>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- DETERRENT EFFECT OF CAPITAL PUNISHMENT ON VIOLENT CRIME: REVISITED -->
+  <div class="card">
+    <div class="text-container">
+      <p class="card-title">RE: Investigating the Deterrent Effect of Capital Punishment on Violent Crime Rates</p>
+      <p class="card-date">12/2020</p>
+      <p class="card-desc">I revisited my earlier project on the same topic, with an updated methodology and 
+        research design. With this design, I utilize individual executions in U.S. States as
+        an exogenous shock to crime rates and implement a difference-in-differences (DID) strategy as well as 
+        a regression discontinuity (RD) strategy. In line with previous research in this field, I found that capital
+        punishmnent does not have any discernible effect on violent crime rates.</p>
+      <a href="/resources/docs/cappun2.pdf" target="_blank" class="card-button">read more</a>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- MODELING TRENDS IN SURFACE TEMPERATURE -->
+  <div class="card">
+    <div class="text-container">
+      <p class="card-title">The Effects of Improper Standardization on Modeling Trends in Surface Temperature</p>
+      <p class="card-date">10/2020</p>
+      <p class="card-desc">My team and I were interesting in the seminal work by Mannes, Bradley, and
+        Hughes (1998) on global warming. Their work has been criticized for improper use of statistical methodolgy,
+        and my team replicated the study with modern methods to highlight the impacts and importance of slight changes
+        in methodologies.</p>
+      <a href="/resources/docs/mbh.pdf" target="_blank" class="card-button">read more</a>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- BRITISH PETROLEUM OIL SPILL -->
+  <div class="card">
+    <div class="text-container">
+      <p class="card-title">The 2010 British Petroleum Oil Spill: A Study of Cumulative Abnormal Returns (CARs)</p>
+      <p class="card-date">03/2020</p>
+      <p class="card-desc">My team and I were interested in the magnitudes of the losses British
+        Petroleum and several other North American oil corporations suffered over the course of the 2010 BP Oil Spill.
+      </p>
+      <a href="/resources/docs/bpoilspill.pdf" target="_blank" class="card-button">read more</a>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- DETERRENT EFFECT OF CAPITAL PUNISHMENT -->
+  <div class="card">
+    <div class="text-container">
+      <p class="card-title">Investigating the Deterrent Effect of Capital Punishment on Violent Crime Rates</p>
+      <p class="card-date">12/2019</p>
+      <p class="card-desc">A study to determine the existence of the supposed deterrent effect of capital
+        punishment on violent crimes in the U.S. I utilize the abolition of capital punishment as an exogenous shock
+        to crime rates. This study implements a difference-in-differences (DID) identification strategy.
+      </p>
+      <a href="/resources/docs/cappun1.pdf" target="_blank" class="card-button">read more</a>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
 </body>
 

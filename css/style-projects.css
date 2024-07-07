@@ -1,60 +1,39 @@
 @media only screen and (min-width: 800px) {
 
-    .container {
-        padding-top: 50px;
-        width: 100vw;
-        text-align: center;
-    }
-
-    .cardgrid {
-        padding-left: 6vw;
-        padding-right: 6vw;
-        margin-top: 60px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 50px;
-    }
-
     .card {
-        display: flex;
-        flex-direction: column;
+        width: 75vw;
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='10' stroke-dasharray='2%2c 6' stroke-dashoffset='24' stroke-linecap='butt'/%3e%3c/svg%3e");
+        justify-content: center;
         text-align: center;
+        margin: auto;
     }
 
-    .card-image {
+    .text-container{
+        padding-top: 5px;
+        padding-bottom: 25px;
         text-align: center;
+        justify-content: center;
+        width: 50vw;
+        margin: auto;
     }
 
-    .project-image {
-        max-width: 400px;
-        object-fit: cover;
-    }
-
-    .card-text {
-        text-align: left;
-    }
-
-    p.card-text-date {
-        font-family: "JosefinSans";
-        font-weight: 300;
-        font-style: italic;
-        font-size: 10px;
+    .card-title {
+        font-family: "Futura";
+        font-weight: 700;
+        font-size: 30px;
         color: var(--eerieblack);
     }
 
-    p.card-text-title {
-        font-family: "YesevaOne";
-        font-weight: 400;
-        font-style: normal;
-        font-size: 25px;
-        color: var(--moonstone);
+    .card-date {
+        margin-top: -20px;
+        font-family: "CourierPrime";
+        font-size: 10px;
     }
 
-    p.card-text-description {
-        font-family: "JosefinSans";
-        font-weight: 300;
-        font-style: normal;
-        font-size: 20px;
+    .card-desc {
+        font-family: "CourierPrime";
+        font-size: 15px;
+        padding-bottom: 20px;
         color: var(--eerieblack);
     }
 
@@ -62,22 +41,17 @@
     .card-button:link,
     .card-button:visited {
         width: max-content;
-        padding: 10px 12px;
+        padding: 8px 10px;
         margin: auto;
+        background-color: var(--burntorange);
+        font-family: "CourierPrime";
+        color: ivory;
         text-decoration: none;
-        font-family: "Lato";
-        font-weight: 400;
-        font-style: normal;
-        font-size: 20px;
-        border: 2px solid var(--eerieblack);
-        color: var(--eerieblack);
-        background-color: var(--powderblue);
-        border-radius: 10px;
     }
 
     .card-button:hover {
-        color: var(--powderblue);
-        background-color: var(--eerieblack);
+        color: var(--eerieblack);
+        border: 2px dashed;
         transition: 0.5s;
     }
 
@@ -85,61 +59,40 @@
 
 @media only screen and (max-width: 799px) {
 
-    .container {
-        padding-top: 20px;
-        width: 100vw;
-        text-align: center;
-    }
-
-    .cardgrid {
-        padding-left: 2vw;
-        padding-right: 2vw;
-        margin-top: 15px;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 10px;
-    }
-
     .card {
-        display: flex;
-        flex-direction: column;
+        width: 90vw;
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='10' stroke-dasharray='2%2c 6' stroke-dashoffset='24' stroke-linecap='butt'/%3e%3c/svg%3e");
+        justify-content: center;
         text-align: center;
+        margin: auto;
     }
 
-    .card-image {
+    .text-container{
+        padding-top: 5px;
+        padding-bottom: 25px;
         text-align: center;
+        justify-content: center;
+        width: 75vw;
+        margin: auto;
     }
 
-    .project-image {
-        max-width: 400px;
-        object-fit: cover;
-    }
-
-    .card-text {
-        text-align: left;
-    }
-
-    p.card-text-date {
-        font-family: "JosefinSans";
-        font-weight: 300;
-        font-style: italic;
-        font-size: 10px;
+    .card-title {
+        font-family: "Futura";
+        font-weight: 700;
+        font-size: 30px;
         color: var(--eerieblack);
     }
 
-    p.card-text-title {
-        font-family: "YesevaOne";
-        font-weight: 400;
-        font-style: normal;
-        font-size: 15px;
-        color: var(--moonstone);
+    .card-date {
+        margin-top: -20px;
+        font-family: "CourierPrime";
+        font-size: 10px;
     }
 
-    p.card-text-description {
-        font-family: "JosefinSans";
-        font-weight: 300;
-        font-style: normal;
-        font-size: 13px;
+    .card-desc {
+        font-family: "CourierPrime";
+        font-size: 15px;
+        padding-bottom: 20px;
         color: var(--eerieblack);
     }
 
@@ -147,23 +100,19 @@
     .card-button:link,
     .card-button:visited {
         width: max-content;
-        padding: 10px 12px;
+        padding: 8px 10px;
         margin: auto;
+        background-color: var(--burntorange);
+        font-family: "CourierPrime";
+        color: ivory;
         text-decoration: none;
-        font-family: "JosefinSans";
-        font-weight: 500;
-        font-style: normal;
-        font-size: 13px;
-        border: 2px solid var(--eerieblack);
-        color: var(--eerieblack);
-        background-color: var(--powderblue);
-        border-radius: 8px;
     }
 
     .card-button:hover {
-        color: var(--powderblue);
-        background-color: var(--eerieblack);
+        color: var(--eerieblack);
+        border: 2px dashed;
         transition: 0.5s;
     }
+
 
 }

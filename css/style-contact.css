@@ -1,104 +1,115 @@
+@media only screen and (min-width: 800px) {
 
-@media only screen and (min-width: 600px) {
-.text-container {
-    padding-top: 50px;
-    width: 100vw;
-    text-align: center;;
-}
-
-.email:link,
-.email:visited {
-    font-family: "Lato";
-    font-weight: 900;
-    font-style: normal;
-    font-size: 30px;
-    text-decoration: none;
-    color: var(--moonstone);
-    opacity: 1.0;
-}
-
-.email:hover {
-    color: var(--eerieblack);
-    transition: 1s;
-}
-
-.iconlist {
-    padding-top: 50px;
-    width: 100vw;
-    text-align: center;
-}
-
-.fa-github {
-    font-size: 100px;
-    padding-right: 10px;
-    color: var(--moonstone);
-}
-
-.fa-github:hover {
-    color: var(--eerieblack);
-    transition: 1s;
-}
-
-.fa-linkedin {
-    font-size: 100px;
-    padding-left: 10px;
-    color: var(--moonstone)
-}
-
-.fa-linkedin:hover {
-    color: var(--eerieblack);
-    transition: 1s;
-}
-}
-
-@media only screen and (max-width: 599px){
-    .text-container {
-        padding-top: 50px;
-        width: 100vw;
-        text-align: center;;
+    body {
+        overflow-y: hidden;
     }
-    
-    .email:link,
-    .email:visited {
-        font-family: "Lato";
-        font-weight: 900;
-        font-style: normal;
-        font-size: 20px;
-        text-decoration: none;
-        color: var(--moonstone);
-        opacity: 1.0;
-    }
-    
-    .email:hover {
-        color: var(--eerieblack);
-        transition: 1s;
-    }
-    
-    .iconlist {
+
+    .icon-list {
         padding-top: 50px;
         width: 100vw;
         text-align: center;
+        margin: auto;
     }
-    
-    .fa-github {
-        font-size: 75px;
-        padding-right: 15px;
-        color: var(--moonstone);
-    }
-    
-    .fa-github:hover {
+
+    .fa-envelope {
+        font-size: 100px;
+        padding-right: 25px;
         color: var(--eerieblack);
+    }
+
+    .fa-envelope:hover {
+        color: var(--burntorange);
         transition: 1s;
     }
-    
-    .fa-linkedin {
-        font-size: 75px;
-        padding-left: 15px;
-        color: var(--moonstone)
-    }
-    
-    .fa-linkedin:hover {
+
+    .fa-github {
+        font-size: 100px;
+        padding-right: 25px;
         color: var(--eerieblack);
+    }
+
+    .fa-github:hover {
+        color: var(--burntorange);
+        transition: 1s;
+    }
+
+    .fa-linkedin {
+        font-size: 100px;
+        padding-right: 25px;
+        color: var(--eerieblack);
+    }
+
+    .fa-linkedin:hover {
+        color: var(--burntorange);
+        transition: 1s;
+    }
+
+    .fa-file-pdf {
+        font-size: 100px;
+        padding-right: 0px;
+        color: var(--eerieblack);
+    }
+
+    .fa-file-pdf:hover {
+        color: var(--burntorange);
+        transition: 1s;
+    }
+
+}
+
+@media only screen and (max-width: 799px) {
+    body {
+        overflow-y: hidden;
+    }
+
+    .icon-list {
+        padding-top: 50px;
+        width: 100vw;
+        text-align: center;
+        margin: auto;
+    }
+
+    .fa-envelope {
+        font-size: 50px;
+        padding-right: 25px;
+        color: var(--eerieblack);
+    }
+
+    .fa-envelope:hover {
+        color: var(--burntorange);
+        transition: 1s;
+    }
+
+    .fa-github {
+        font-size: 50px;
+        padding-right: 25px;
+        color: var(--eerieblack);
+    }
+
+    .fa-github:hover {
+        color: var(--burntorange);
+        transition: 1s;
+    }
+
+    .fa-linkedin {
+        font-size: 50px;
+        padding-right: 25px;
+        color: var(--eerieblack);
+    }
+
+    .fa-linkedin:hover {
+        color: var(--burntorange);
+        transition: 1s;
+    }
+
+    .fa-file-pdf {
+        font-size: 50px;
+        padding-right: 0px;
+        color: var(--eerieblack);
+    }
+
+    .fa-file-pdf:hover {
+        color: var(--burntorange);
         transition: 1s;
     }
 }

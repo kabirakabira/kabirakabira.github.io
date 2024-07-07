@@ -20,32 +20,54 @@
         });
     </script>
 
-    <!-- Page elements -->
-
-    <br>
-    <div class="image-container">
-        <img class="headshot" src="/images/index-images/kj_headshot.jpeg">
-    </div>
-
-    <div class="text-container">
-        <h1>Hi, I'm Kabir</h1>
-        <h2>and this is a collection of my academic and personal work.</h2>
-    </div>
-
-    <div class="text-container">
-        <p>The majority of my work is centered around econometrics and statistics, and their
-            application to economic development, spatial analysis, and urban planning.
-        </p>
-        <p>At the same time, I'm always keen to learn new things. I coded this website from
-            scratch by teaching myself HTML, CSS, and JavaScript. This is a pretty basic example of what you can do with
-            these tools, and if you'd like to try your hand at it, you can find the source code in the Projects tab.
-        </p>
-    </div>
-
     <br>
 
-    <div class="image-container">
-        <img src="/images/index-images/honestwork.jpeg" class="meme">
+    <div class="text-container">
+
+        <div class="plaintext-0">
+            <p id="typewriter-effect"></p>
+        </div>
+
+        <script>
+            const text = "Hello!";
+            const element = document.getElementById("typewriter-effect");
+            let i = 0;
+            function typeWriter() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 350); // Adjust typing speed here (in milliseconds)
+                }
+            }
+            typeWriter();
+        </script>
+
+        <div class="plaintext-1">
+            <p>I'm Kabir, and this is a collection of my academic and personal work.</p>
+        </div>
+
+        <div class="plaintext-2">
+            <p>The majority of my work deals with how econometrics and statistics relate to the field of urban planning.
+                I'm especially interested in applying spatial analysis methods to economic development and
+                transportation issues.</p>
+        </div>
+
+    </div>
+
+    <br>
+
+    <hr width="60%" , size="2">
+    <hr width="60%" , size="2">
+
+    <div class="text-container">
+        <p class="card-header"> Latest Project </p>
+        <p class="recent-title">Classifying Opportunity Zones using ML Algorithms</p>
+        <p class="recent-desc"> I tested the capability of logistic, knn and random forest classification models to be able
+            to predict a census tract's designation as a Qualified Opportunity Zone based on 2015 American Community Survey
+            data. Spoiler: The models didn't do too well, but it was a fun learning experience. It also revealed that not
+            all States followed similar guidelines when nominating Census Tracts for QOZ designation.
+        </p>
+        <a href="https://rpubs.com/kabirakabira/1202089" target="_blank" class="recent-button">read more</a>
     </div>
 
 </body>
