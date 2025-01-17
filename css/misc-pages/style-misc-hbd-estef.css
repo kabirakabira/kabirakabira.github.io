@@ -97,7 +97,7 @@ body,
 
 @media only screen and (max-width: 799px) {
     .main-gif{
-        max-width: 300px;
-        max-height: 300px;
+        max-width: 370px;
+        max-height: 370px;
     }
 }
