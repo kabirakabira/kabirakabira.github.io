@@ -1,0 +1,103 @@
+body {
+    overflow-x: hidden;
+}
+
+
+.map-container {
+    width: 100vw;
+    margin: auto;
+    position: relative;
+}
+
+#map {
+    height: 800px;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* Popups */
+.leaflet-popup-content {
+    width: 250px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Popup Tab Layout */
+.popup-tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.popup-tab {
+    padding: 8px 16px;
+    cursor: pointer;
+    background: #f5f5f5;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.popup-tab:hover {
+    background: #e0e0e0;
+}
+
+.popup-tab.active {
+    background: white;
+    border-bottom-color: #3388ff;
+    font-weight: bold;
+}
+
+.popup-content {
+    display: none;
+    padding: 5px 0;
+    max-height: 150px;
+    max-width: 90%;
+    overflow: auto;
+}
+
+.popup-content.active {
+    display: block;
+}
+
+
+/* table content */
+.popup-table {
+    width: 90%;
+    margin: 0px auto;
+    border-collapse: collapse;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.popup-table td,
+th {
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+}
+
+.table-img {
+    max-width: 80px;
+    display: block;
+    margin: 0 auto;
+}
+.table-img-small {
+    max-width: 30px;
+    display: block;
+    margin: 0 auto;
+}
+
+.table-img-smallest {
+    max-width: 30px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.popup-tab-img {
+    max-width: 30px;
+}
+
+tr:nth-child(even) {
+    background-color: #f0ead6;
+}

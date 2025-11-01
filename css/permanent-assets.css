@@ -64,6 +64,7 @@ body,
 #background { 
   width: 100vw;
   min-height: 100vh;
+  margin-left: -0.25vw;
   background-color: #fbf4ea;
 }
 
