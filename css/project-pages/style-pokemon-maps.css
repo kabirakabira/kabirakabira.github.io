@@ -2,16 +2,123 @@ body {
     overflow-x: hidden;
 }
 
+/* Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 1000px) {
+    .modal {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+@media (max-width: 1200px) {
+    .modal {
+        background: #fbf4ea;
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 300px;
+        width: 90%;
+        max-height: 60vh;
+        overflow-y: auto;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+.modal-header {
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.close-btn {
+    background: var(--burntorange);
+    color: var(--eerieblack);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    transition: background 0.3s;
+}
+
+.close-btn:hover {
+    background: var(--eerieblack);
+    color: var(--burntorange);
+}
+
+/* Info button */
+.info-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--charcoal);
+    color: var(--platinum);
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.info-btn:hover {
+    background: var(--burntorange);
+}
+
+
+/* Map */
 .map-container {
     width: 100vw;
     margin: auto;
     position: relative;
 }
 
-#map {
-    height: 50vw;
-    width: 75vw;
-    margin: 0 auto;
+@media (min-width: 1000px) {
+    #map {
+        height: 50vw;
+        width: 75vw;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 999px) {
+    #map {
+        height: 80vh;
+        width: 80vw;
+        margin: 0 auto;
+    }
 }
 
 /* Popups */
@@ -81,6 +188,7 @@ th {
     display: block;
     margin: 0 auto;
 }
+
 .table-img-small {
     max-width: 30px;
     display: block;

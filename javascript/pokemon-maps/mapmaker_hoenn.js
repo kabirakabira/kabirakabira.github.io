@@ -6,15 +6,26 @@ let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight
 const imageUrl = "/resources/project-resources/pokemon-maps/hoenn/basemap_v2.png";
 
 // set bounds
-const imageHeight = 800;
-const imageWidth = 1200;
 
-const imageBounds = [
-    [0, 0],
-    [imageHeight, imageWidth]
-];
+if (vw > 1000) {
+    var imageHeight = 0.50 * vw;
+    var imageWidth = 0.75 * vw;
 
+    var imageBounds = [
+        [0, 0],
+        [imageHeight, imageWidth]
+    ];
+}
 
+if (vw < 1000) {
+    var imageHeight = 800;
+    var imageWidth = 1200;
+
+    var imageBounds = [
+        [0, 0],
+        [imageHeight, imageWidth]
+    ];
+}
 
 // set up map 
 const map = L.map("map", {
@@ -30,12 +41,17 @@ L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
 map.fitBounds(imageBounds);
 
+// if map is truncated, center on littleroot town
+if (vw < 1000) {
+    map.setView([0.41355 * imageHeight, 0.18697 * imageWidth]);
+}
+
 ///// routes
 const popupOptions = {
     autoPan: true,
-    autoPanPadding: [20, 20],
+    autoPanPadding: [0, 0],
     keepInView: true,
-    maxWidth: 300
+    maxWidth: 250
 };
 
 // Route 101
@@ -83,7 +99,7 @@ var route101_popup = L.popup().setContent(`
 
 var route101_polygon = L.polygon([[[0.365 * imageHeight, 0.191666666666667 * imageWidth], [0.30875 * imageHeight, 0.191666666666667 * imageWidth], [0.30875 * imageHeight, 0.206666666666667 * imageWidth], [0.365 * imageHeight, 0.206666666666667 * imageWidth], [0.365 * imageHeight, 0.191666666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route101_popup, popupOptions);
 
@@ -160,7 +176,7 @@ var route102_popup = L.popup().setContent(`
 
 var route102_polygon = L.polygon([[[0.3975 * imageHeight, 0.138333333333333 * imageWidth], [0.36375 * imageHeight, 0.138333333333333 * imageWidth], [0.36375 * imageHeight, 0.190833333333333 * imageWidth], [0.3975 * imageHeight, 0.190833333333333 * imageWidth], [0.3975 * imageHeight, 0.138333333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route102_popup, popupOptions);
 
@@ -209,7 +225,7 @@ var route103_1_popup = L.popup().setContent(`
 
 var route103_1_polygon = L.polygon([[[0.46625 * imageHeight, 0.194166666666667 * imageWidth], [0.39625 * imageHeight, 0.194166666666667 * imageWidth], [0.39625 * imageHeight, 0.215 * imageWidth], [0.46625 * imageHeight, 0.215 * imageWidth], [0.46625 * imageHeight, 0.194166666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route103_1_popup, popupOptions);
 
@@ -266,7 +282,7 @@ var route103_2_popup = L.popup().setContent(`
 
 var route103_2_polygon = L.polygon([[[0.46625 * imageHeight, 0.215 * imageWidth], [0.44625 * imageHeight, 0.215 * imageWidth], [0.44625 * imageHeight, 0.2825 * imageWidth], [0.46625 * imageHeight, 0.2825 * imageWidth], [0.46625 * imageHeight, 0.215 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route103_2_popup, popupOptions);
 
@@ -331,7 +347,7 @@ var route104_1_popup = L.popup().setContent(`
 
 var route104_1_polygon = L.polygon([[[0.4 * imageHeight, 0.0408333333333333 * imageWidth], [0.33625 * imageHeight, 0.0408333333333333 * imageWidth], [0.33625 * imageHeight, 0.119166666666667 * imageWidth], [0.4 * imageHeight, 0.119166666666667 * imageWidth], [0.4 * imageHeight, 0.0408333333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route104_1_popup, popupOptions);
 
@@ -396,7 +412,7 @@ var route104_2_popup = L.popup().setContent(`
 
 var route104_2_polygon = L.polygon([[[0.525 * imageHeight, 0.0625 * imageWidth], [0.42875 * imageHeight, 0.0625 * imageWidth], [0.42875 * imageHeight, 0.105 * imageWidth], [0.525 * imageHeight, 0.105 * imageWidth], [0.525 * imageHeight, 0.0625 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route104_2_popup, popupOptions);
 
@@ -453,7 +469,7 @@ var route105_popup = L.popup().setContent(`
 
 var route105_polygon = L.polygon([[[0.3325 * imageHeight, 0.04 * imageWidth], [0.20375 * imageHeight, 0.04 * imageWidth], [0.20375 * imageHeight, 0.085 * imageWidth], [0.3325 * imageHeight, 0.085 * imageWidth], [0.3325 * imageHeight, 0.04 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route105_popup, popupOptions);
 
@@ -510,7 +526,7 @@ var route106_1_popup = L.popup().setContent(`
 
 var route106_1_polygon = L.polygon([[[0.20125 * imageHeight, 0.0308333333333333 * imageWidth], [0.15625 * imageHeight, 0.0308333333333333 * imageWidth], [0.15625 * imageHeight, 0.15 * imageWidth], [0.20125 * imageHeight, 0.15 * imageWidth], [0.20125 * imageHeight, 0.0308333333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route106_1_popup, popupOptions);
 
@@ -567,7 +583,7 @@ var route106_2_popup = L.popup().setContent(`
 
 var route106_2_polygon = L.polygon([[[0.1575 * imageHeight, 0.124166666666667 * imageWidth], [0.105 * imageHeight, 0.124166666666667 * imageWidth], [0.105 * imageHeight, 0.1425 * imageWidth], [0.1575 * imageHeight, 0.1425 * imageWidth], [0.1575 * imageHeight, 0.124166666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route106_2_popup, popupOptions);
 
@@ -624,7 +640,7 @@ var route107_popup = L.popup().setContent(`
 
 var route107_polygon = L.polygon([[[0.125 * imageHeight, 0.145833333333333 * imageWidth], [0.08625 * imageHeight, 0.145833333333333 * imageWidth], [0.08625 * imageHeight, 0.221666666666667 * imageWidth], [0.125 * imageHeight, 0.221666666666667 * imageWidth], [0.125 * imageHeight, 0.145833333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route107_popup, popupOptions);
 
@@ -681,7 +697,7 @@ var route108_popup = L.popup().setContent(`
 
 var route108_polygon = L.polygon([[[0.135 * imageHeight, 0.225 * imageWidth], [0.0925 * imageHeight, 0.225 * imageWidth], [0.0925 * imageHeight, 0.281666666666667 * imageWidth], [0.135 * imageHeight, 0.281666666666667 * imageWidth], [0.135 * imageHeight, 0.225 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route108_popup, popupOptions);
 
@@ -738,7 +754,7 @@ var route109_popup = L.popup().setContent(`
 
 var route109_polygon = L.polygon([[[0.26875 * imageHeight, 0.284166666666667 * imageWidth], [0.105 * imageHeight, 0.284166666666667 * imageWidth], [0.105 * imageHeight, 0.3475 * imageWidth], [0.26875 * imageHeight, 0.3475 * imageWidth], [0.26875 * imageHeight, 0.284166666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route109_popup, popupOptions);
 
@@ -819,7 +835,7 @@ var route110_popup = L.popup().setContent(`
 
 var route110_polygon = L.polygon([[[0.59125 * imageHeight, 0.285 * imageWidth], [0.355 * imageHeight, 0.285 * imageWidth], [0.355 * imageHeight, 0.339166666666667 * imageWidth], [0.59125 * imageHeight, 0.339166666666667 * imageWidth], [0.59125 * imageHeight, 0.285 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route110_popup, popupOptions);
 
@@ -892,7 +908,7 @@ var route111_popup = L.popup().setContent(`
 
 var route111_polygon = L.polygon([[[0.92 * imageHeight, 0.311666666666667 * imageWidth], [0.63875 * imageHeight, 0.311666666666667 * imageWidth], [0.63875 * imageHeight, 0.3675 * imageWidth], [0.92 * imageHeight, 0.3675 * imageWidth], [0.92 * imageHeight, 0.311666666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route111_popup, popupOptions);
 
@@ -937,7 +953,7 @@ var route112_1_popup = L.popup().setContent(`
 
 var route112_1_polygon = L.polygon([[[0.875 * imageHeight, 0.288333333333333 * imageWidth], [0.7775 * imageHeight, 0.288333333333333 * imageWidth], [0.7775 * imageHeight, 0.31 * imageWidth], [0.875 * imageHeight, 0.31 * imageWidth], [0.875 * imageHeight, 0.288333333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route112_1_popup, popupOptions);
 
@@ -982,7 +998,7 @@ var route112_2_popup = L.popup().setContent(`
 
 var route112_2_polygon = L.polygon([[[0.805 * imageHeight, 0.2525 * imageWidth], [0.7675 * imageHeight, 0.2525 * imageWidth], [0.7675 * imageHeight, 0.288333333333333 * imageWidth], [0.805 * imageHeight, 0.288333333333333 * imageWidth], [0.805 * imageHeight, 0.2525 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route112_2_popup, popupOptions);
 
@@ -1031,7 +1047,7 @@ var route113_popup = L.popup().setContent(`
 
 var route113_polygon = L.polygon([[[0.9225 * imageHeight, 0.194166666666667 * imageWidth], [0.89875 * imageHeight, 0.194166666666667 * imageWidth], [0.89875 * imageHeight, 0.310833333333333 * imageWidth], [0.9225 * imageHeight, 0.310833333333333 * imageWidth], [0.9225 * imageHeight, 0.194166666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route113_popup, popupOptions);
 
@@ -1108,7 +1124,7 @@ var route114_popup = L.popup().setContent(`
 
 var route114_polygon = L.polygon([[[0.92875 * imageHeight, 0.121666666666667 * imageWidth], [0.85625 * imageHeight, 0.121666666666667 * imageWidth], [0.85625 * imageHeight, 0.171666666666667 * imageWidth], [0.92875 * imageHeight, 0.171666666666667 * imageWidth], [0.92875 * imageHeight, 0.121666666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route114_popup, popupOptions);
 
@@ -1181,7 +1197,7 @@ var route115_popup = L.popup().setContent(`
 
 var route115_polygon = L.polygon([[[0.6975 * imageHeight, 0.0675 * imageWidth], [0.59375 * imageHeight, 0.0675 * imageWidth], [0.59375 * imageHeight, 0.11 * imageWidth], [0.6975 * imageHeight, 0.11 * imageWidth], [0.6975 * imageHeight, 0.0675 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route115_popup, popupOptions);
 
@@ -1242,7 +1258,7 @@ var route116_popup = L.popup().setContent(`
 
 var route116_polygon = L.polygon([[[0.58625 * imageHeight, 0.0775 * imageWidth], [0.56375 * imageHeight, 0.0775 * imageWidth], [0.56375 * imageHeight, 0.151666666666667 * imageWidth], [0.58625 * imageHeight, 0.151666666666667 * imageWidth], [0.58625 * imageHeight, 0.0775 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route116_popup, popupOptions);
 
@@ -1315,7 +1331,7 @@ var route117_popup = L.popup().setContent(`
 
 var route117_polygon = L.polygon([[[0.64125 * imageHeight, 0.218333333333333 * imageWidth], [0.60125 * imageHeight, 0.218333333333333 * imageWidth], [0.60125 * imageHeight, 0.300833333333333 * imageWidth], [0.64125 * imageHeight, 0.300833333333333 * imageWidth], [0.64125 * imageHeight, 0.218333333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route117_popup, popupOptions);
 
@@ -1396,7 +1412,7 @@ var route118_popup = L.popup().setContent(`
 
 var route118_polygon = L.polygon([[[0.6275 * imageHeight, 0.328333333333333 * imageWidth], [0.59375 * imageHeight, 0.328333333333333 * imageWidth], [0.59375 * imageHeight, 0.456666666666667 * imageWidth], [0.6275 * imageHeight, 0.456666666666667 * imageWidth], [0.6275 * imageHeight, 0.328333333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route118_popup, popupOptions);
 
@@ -1477,7 +1493,7 @@ var route119_popup = L.popup().setContent(`
 
 var route119_polygon = L.polygon([[[0.8925 * imageHeight, 0.3775 * imageWidth], [0.6375 * imageHeight, 0.3775 * imageWidth], [0.6375 * imageHeight, 0.444166666666667 * imageWidth], [0.8925 * imageHeight, 0.444166666666667 * imageWidth], [0.8925 * imageHeight, 0.3775 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route119_popup, popupOptions);
 
@@ -1554,7 +1570,7 @@ var route120_popup = L.popup().setContent(`
 
 var route120_polygon = L.polygon([[[0.89375 * imageHeight, 0.466666666666667 * imageWidth], [0.75375 * imageHeight, 0.466666666666667 * imageWidth], [0.75375 * imageHeight, 0.558333333333333 * imageWidth], [0.89375 * imageHeight, 0.558333333333333 * imageWidth], [0.89375 * imageHeight, 0.466666666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route120_popup, popupOptions);
 
@@ -1635,7 +1651,7 @@ var route121_popup = L.popup().setContent(`
 
 var route121_polygon = L.polygon([[[0.795 * imageHeight, 0.561666666666667 * imageWidth], [0.755 * imageHeight, 0.561666666666667 * imageWidth], [0.755 * imageHeight, 0.665833333333333 * imageWidth], [0.795 * imageHeight, 0.665833333333333 * imageWidth], [0.795 * imageHeight, 0.561666666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route121_popup, popupOptions);
 
@@ -1697,7 +1713,7 @@ var route122_popup = L.popup().setContent(`
 
 var route122_polygon = L.polygon([[[0.735 * imageHeight, 0.5225 * imageWidth], [0.64875 * imageHeight, 0.5225 * imageWidth], [0.64875 * imageHeight, 0.660833333333333 * imageWidth], [0.735 * imageHeight, 0.660833333333333 * imageWidth], [0.735 * imageHeight, 0.5225 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route122_popup, popupOptions);
 
@@ -1778,7 +1794,7 @@ var route123_popup = L.popup().setContent(`
 
 var route123_polygon = L.polygon([[[0.6325 * imageHeight, 0.46 * imageWidth], [0.59125 * imageHeight, 0.46 * imageWidth], [0.59125 * imageHeight, 0.624166666666667 * imageWidth], [0.6325 * imageHeight, 0.624166666666667 * imageWidth], [0.6325 * imageHeight, 0.46 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route123_popup, popupOptions);
 
@@ -1851,7 +1867,7 @@ var route124_popup = L.popup().setContent(`
 
 var route124_polygon = L.polygon([[[0.79 * imageHeight, 0.726666666666667 * imageWidth], [0.6725 * imageHeight, 0.726666666666667 * imageWidth], [0.6725 * imageHeight, 0.830833333333333 * imageWidth], [0.79 * imageHeight, 0.830833333333333 * imageWidth], [0.79 * imageHeight, 0.726666666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route124_popup, popupOptions);
 
@@ -1912,7 +1928,7 @@ var route125_popup = L.popup().setContent(`
 
 var route125_polygon = L.polygon([[[0.8725 * imageHeight, 0.799166666666667 * imageWidth], [0.7975 * imageHeight, 0.799166666666667 * imageWidth], [0.7975 * imageHeight, 0.923333333333333 * imageWidth], [0.8725 * imageHeight, 0.923333333333333 * imageWidth], [0.8725 * imageHeight, 0.799166666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route125_popup, popupOptions);
 
@@ -1985,7 +2001,7 @@ var route126_popup = L.popup().setContent(`
 
 var route126_polygon = L.polygon([[[0.66625 * imageHeight, 0.713333333333333 * imageWidth], [0.4875 * imageHeight, 0.713333333333333 * imageWidth], [0.4875 * imageHeight, 0.8175 * imageWidth], [0.66625 * imageHeight, 0.8175 * imageWidth], [0.66625 * imageHeight, 0.713333333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route126_popup, popupOptions);
 
@@ -2046,7 +2062,7 @@ var route127_popup = L.popup().setContent(`
 
 var route127_polygon = L.polygon([[[0.67 * imageHeight, 0.821666666666667 * imageWidth], [0.47875 * imageHeight, 0.821666666666667 * imageWidth], [0.47875 * imageHeight, 0.9125 * imageWidth], [0.67 * imageHeight, 0.9125 * imageWidth], [0.67 * imageHeight, 0.821666666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route127_popup, popupOptions);
 
@@ -2111,7 +2127,7 @@ var route128_popup = L.popup().setContent(`
 
 var route128_polygon = L.polygon([[[0.47375 * imageHeight, 0.811666666666667 * imageWidth], [0.41125 * imageHeight, 0.811666666666667 * imageWidth], [0.41125 * imageHeight, 0.954166666666667 * imageWidth], [0.47375 * imageHeight, 0.954166666666667 * imageWidth], [0.47375 * imageHeight, 0.811666666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route128_popup, popupOptions);
 
@@ -2176,7 +2192,7 @@ var route129_popup = L.popup().setContent(`
 
 var route129_polygon = L.polygon([[[0.40375 * imageHeight, 0.785 * imageWidth], [0.2975 * imageHeight, 0.785 * imageWidth], [0.2975 * imageHeight, 0.8875 * imageWidth], [0.40375 * imageHeight, 0.8875 * imageWidth], [0.40375 * imageHeight, 0.785 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route129_popup, popupOptions);
 
@@ -2237,7 +2253,7 @@ var route130_popup = L.popup().setContent(`
 
 var route130_polygon = L.polygon([[[0.37875 * imageHeight, 0.706666666666667 * imageWidth], [0.30625 * imageHeight, 0.706666666666667 * imageWidth], [0.30625 * imageHeight, 0.7825 * imageWidth], [0.37875 * imageHeight, 0.7825 * imageWidth], [0.37875 * imageHeight, 0.706666666666667 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route130_popup, popupOptions);
 
@@ -2298,7 +2314,7 @@ var route131_popup = L.popup().setContent(`
 
 var route131_polygon = L.polygon([[[0.375 * imageHeight, 0.645833333333333 * imageWidth], [0.31125 * imageHeight, 0.645833333333333 * imageWidth], [0.31125 * imageHeight, 0.705 * imageWidth], [0.375 * imageHeight, 0.705 * imageWidth], [0.375 * imageHeight, 0.645833333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route131_popup, popupOptions);
 
@@ -2363,7 +2379,7 @@ var route132_popup = L.popup().setContent(`
 
 var route132_polygon = L.polygon([[[0.39 * imageHeight, 0.545 * imageWidth], [0.32 * imageHeight, 0.545 * imageWidth], [0.32 * imageHeight, 0.6225 * imageWidth], [0.39 * imageHeight, 0.6225 * imageWidth], [0.39 * imageHeight, 0.545 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route132_popup, popupOptions);
 
@@ -2428,7 +2444,7 @@ var route133_popup = L.popup().setContent(`
 
 var route133_polygon = L.polygon([[[0.39 * imageHeight, 0.458333333333333 * imageWidth], [0.32 * imageHeight, 0.458333333333333 * imageWidth], [0.32 * imageHeight, 0.543333333333333 * imageWidth], [0.39 * imageHeight, 0.543333333333333 * imageWidth], [0.39 * imageHeight, 0.458333333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route133_popup, popupOptions);
 
@@ -2493,7 +2509,7 @@ var route134_popup = L.popup().setContent(`
 
 var route134_polygon = L.polygon([[[0.39 * imageHeight, 0.3475 * imageWidth], [0.32 * imageHeight, 0.3475 * imageWidth], [0.32 * imageHeight, 0.456666666666667 * imageWidth], [0.39 * imageHeight, 0.456666666666667 * imageWidth], [0.39 * imageHeight, 0.3475 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(route134_popup, popupOptions);
 
@@ -2540,9 +2556,9 @@ var jaggedPass_popup = L.popup().setContent(`
     </div>
 `);
 
-var jaggedPass_polygon = L.polygon([[[0.83125* imageHeight, 0.230833333333333* imageWidth], [0.79875* imageHeight, 0.230833333333333* imageWidth], [0.79875* imageHeight, 0.2475* imageWidth], [0.83125* imageHeight, 0.2475* imageWidth],[0.83125* imageHeight, 0.230833333333333* imageWidth]]],
+var jaggedPass_polygon = L.polygon([[[0.83125 * imageHeight, 0.230833333333333 * imageWidth], [0.79875 * imageHeight, 0.230833333333333 * imageWidth], [0.79875 * imageHeight, 0.2475 * imageWidth], [0.83125 * imageHeight, 0.2475 * imageWidth], [0.83125 * imageHeight, 0.230833333333333 * imageWidth]]],
     {
-        color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(jaggedPass_popup, popupOptions);
 
@@ -2607,9 +2623,9 @@ var littlerootTown_popup = L.popup().setContent(`
     </div>
 `);
 
-var littlerootTown_marker = L.circle([0.292020874* imageHeight, 0.198610433* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var littlerootTown_marker = L.circle([0.292020874 * imageHeight, 0.198610433 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(littlerootTown_popup, popupOptions)
 
@@ -2657,9 +2673,9 @@ var oldaleTown_popup = L.popup().setContent(`
     </div>
 `);
 
-var oldaleTown_marker = L.circle([0.376835938* imageHeight, 0.201223958* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var oldaleTown_marker = L.circle([0.376835938 * imageHeight, 0.201223958 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(oldaleTown_popup, popupOptions)
 
@@ -2728,9 +2744,9 @@ var petalburgCity_popup = L.popup().setContent(`
     </div>
 `);
 
-var petalburgCity_marker = L.circle([0.377264404* imageHeight, 0.128604736* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var petalburgCity_marker = L.circle([0.377264404 * imageHeight, 0.128604736 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(petalburgCity_popup, popupOptions)
 
@@ -2777,9 +2793,9 @@ var rustboroCity_popup = L.popup().setContent(`
     </div>
 `);
 
-var rustboroCity_marker = L.circle([0.5403125* imageHeight, 0.0846875* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var rustboroCity_marker = L.circle([0.5403125 * imageHeight, 0.0846875 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(rustboroCity_popup, popupOptions)
 
@@ -2852,9 +2868,9 @@ var dewfordTown_popup = L.popup().setContent(`
     </div>
 `);
 
-var dewfordTown_marker = L.circle([0.094583435* imageHeight, 0.106621094* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var dewfordTown_marker = L.circle([0.094583435 * imageHeight, 0.106621094 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(dewfordTown_popup, popupOptions)
 
@@ -2927,9 +2943,9 @@ var slateportCity_popup = L.popup().setContent(`
     </div>
 `);
 
-var slateportCity_marker = L.circle([0.32484375* imageHeight, 0.2996875* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var slateportCity_marker = L.circle([0.32484375 * imageHeight, 0.2996875 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(slateportCity_popup, popupOptions)
 
@@ -2977,9 +2993,9 @@ var mauvilleCity_popup = L.popup().setContent(`
     </div>
 `);
 
-var mauvilleCity_marker = L.circle([0.618439941* imageHeight, 0.314962158* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var mauvilleCity_marker = L.circle([0.618439941 * imageHeight, 0.314962158 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(mauvilleCity_popup, popupOptions)
 
@@ -3027,9 +3043,9 @@ var verdanturfTown_popup = L.popup().setContent(`
     </div>
 `);
 
-var verdanturfTown_marker = L.circle([0.618304443* imageHeight, 0.205619303* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var verdanturfTown_marker = L.circle([0.618304443 * imageHeight, 0.205619303 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(verdanturfTown_popup, popupOptions)
 
@@ -3086,9 +3102,9 @@ var lavaridgeTown_popup = L.popup().setContent(`
     </div>
 `);
 
-var lavaridgeTown_marker = L.circle([0.783569946* imageHeight, 0.239344076* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var lavaridgeTown_marker = L.circle([0.783569946 * imageHeight, 0.239344076 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(lavaridgeTown_popup, popupOptions)
 
@@ -3136,9 +3152,9 @@ var fallarborTown_popup = L.popup().setContent(`
     </div>
 `);
 
-var fallarborTown_marker = L.circle([0.909624634* imageHeight, 0.181349284* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var fallarborTown_marker = L.circle([0.909624634 * imageHeight, 0.181349284 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(fallarborTown_popup, popupOptions)
 
@@ -3186,9 +3202,9 @@ var fortreeCity_popup = L.popup().setContent(`
     </div>
 `);
 
-var fortreeCity_marker = L.circle([0.882578125* imageHeight, 0.455885417* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var fortreeCity_marker = L.circle([0.882578125 * imageHeight, 0.455885417 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(fortreeCity_popup, popupOptions)
 
@@ -3265,9 +3281,9 @@ var lilycoveCity_popup = L.popup().setContent(`
     </div>
 `);
 
-var lilycoveCity_marker = L.circle([0.774232788* imageHeight, 0.680493978* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var lilycoveCity_marker = L.circle([0.774232788 * imageHeight, 0.680493978 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(lilycoveCity_popup, popupOptions)
 
@@ -3348,9 +3364,9 @@ var mossdeepCity_popup = L.popup().setContent(`
     </div>
 `);
 
-var mossdeepCity_marker = L.circle([0.742547047* imageHeight, 0.870746975* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var mossdeepCity_marker = L.circle([0.742547047 * imageHeight, 0.870746975 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(mossdeepCity_popup, popupOptions)
 
@@ -3415,9 +3431,9 @@ var sootopolisCity_popup = L.popup().setContent(`
     </div>
 `);
 
-var sootopolisCity_marker = L.circle([0.560316181* imageHeight, 0.760366402* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var sootopolisCity_marker = L.circle([0.560316181 * imageHeight, 0.760366402 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(sootopolisCity_popup, popupOptions)
 
@@ -3494,9 +3510,9 @@ var pacifidlogTown_popup = L.popup().setContent(`
     </div>
 `);
 
-var pacifidlogTown_marker = L.circle([0.35453125* imageHeight, 0.63375* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var pacifidlogTown_marker = L.circle([0.35453125 * imageHeight, 0.63375 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(pacifidlogTown_popup, popupOptions)
 
@@ -3580,9 +3596,9 @@ var evergrandeCity_popup = L.popup().setContent(`
     </div>
 `);
 
-var evergrandeCity_marker = L.circle([0.613964079* imageHeight, 0.938584275* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var evergrandeCity_marker = L.circle([0.613964079 * imageHeight, 0.938584275 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(evergrandeCity_popup, popupOptions)
 
@@ -3645,9 +3661,9 @@ var petalburgWoods_popup = L.popup().setContent(`
     </div>
 `);
 
-var petalburgWoods_marker = L.circle([0.41109375* imageHeight, 0.068333333* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var petalburgWoods_marker = L.circle([0.41109375 * imageHeight, 0.068333333 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(petalburgWoods_popup, popupOptions)
 
@@ -3710,9 +3726,9 @@ var graniteCave_popup = L.popup().setContent(`
     </div>
 `);
 
-var graniteCave_marker = L.circle([0.128828125* imageHeight, 0.064427083* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var graniteCave_marker = L.circle([0.128828125 * imageHeight, 0.064427083 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(graniteCave_popup, popupOptions)
 
@@ -3751,15 +3767,15 @@ var rusturfTunnel_popup = L.popup().setContent(`
     </div>
 `);
 
-var rusturfTunnel_marker_1 = L.circle([0.59484375* imageHeight, 0.149791667* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var rusturfTunnel_marker_1 = L.circle([0.59484375 * imageHeight, 0.149791667 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(rusturfTunnel_popup, popupOptions)
 
-var rusturfTunnel_marker_2 = L.circle([0.65765625* imageHeight, 0.204375* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var rusturfTunnel_marker_2 = L.circle([0.65765625 * imageHeight, 0.204375 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(rusturfTunnel_popup, popupOptions)
 
@@ -3818,15 +3834,15 @@ var fieryPath_popup = L.popup().setContent(`
     </div>
 `);
 
-var fieryPath_marker_1 = L.circle([0.816875* imageHeight, 0.271376953* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var fieryPath_marker_1 = L.circle([0.816875 * imageHeight, 0.271376953 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(fieryPath_popup, popupOptions)
 
-var fieryPath_marker_2 = L.circle([0.8646875* imageHeight, 0.279033203* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var fieryPath_marker_2 = L.circle([0.8646875 * imageHeight, 0.279033203 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(fieryPath_popup, popupOptions)
 
@@ -3856,9 +3872,9 @@ var mtChimney_popup = L.popup().setContent(`
     </div>
 `);
 
-var mtChimney_marker = L.circle([0.866555992484589* imageHeight, 0.242811050415038* imageWidth], Math.sqrt((0.00196349538 * (imageHeight * imageWidth)) / Math.PI),
+var mtChimney_marker = L.circle([0.866555992484589 * imageHeight, 0.242811050415038 * imageWidth], Math.sqrt((0.00196349538 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(mtChimney_popup, popupOptions)
 
@@ -3925,15 +3941,15 @@ var meteorFalls_popup = L.popup().setContent(`
     </div>
 `);
 
-var meteorFalls_marker_1 = L.circle([0.70671875* imageHeight, 0.105729167* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var meteorFalls_marker_1 = L.circle([0.70671875 * imageHeight, 0.105729167 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(meteorFalls_popup, popupOptions)
 
-var meteorFalls_marker_2 = L.circle([0.84140622* imageHeight, 0.13125* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var meteorFalls_marker_2 = L.circle([0.84140622 * imageHeight, 0.13125 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(meteorFalls_popup, popupOptions)
 
@@ -3988,9 +4004,9 @@ var mtPyre_popup = L.popup().setContent(`
     </div>
 `);
 
-var mtPyre_marker = L.circle([0.698430995893974* imageHeight, 0.608019383748372* imageWidth], Math.sqrt((0.00196349538 * (imageHeight * imageWidth)) / Math.PI),
+var mtPyre_marker = L.circle([0.698430995893974 * imageHeight, 0.608019383748372 * imageWidth], Math.sqrt((0.00196349538 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(mtPyre_popup, popupOptions)
 
@@ -4097,9 +4113,9 @@ var safariZone_popup = L.popup().setContent(`
     </div>
 `);
 
-var safariZone_marker = L.circle([0.811868493032951* imageHeight, 0.620238714218139* imageWidth], Math.sqrt((0.00196349538 * (imageHeight * imageWidth)) / Math.PI),
+var safariZone_marker = L.circle([0.811868493032951 * imageHeight, 0.620238714218139 * imageWidth], Math.sqrt((0.00196349538 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(safariZone_popup, popupOptions)
 
@@ -4138,9 +4154,9 @@ var aquaHideout_popup = L.popup().setContent(`
     </div>
 `);
 
-var aquaHideout_marker = L.circle([0.807539063* imageHeight, 0.730833333* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var aquaHideout_marker = L.circle([0.807539063 * imageHeight, 0.730833333 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(aquaHideout_popup, popupOptions)
 
@@ -4203,9 +4219,9 @@ var shoalCave_popup = L.popup().setContent(`
     </div>
 `);
 
-var shoalCave_marker = L.circle([0.84872422* imageHeight, 0.884199099* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var shoalCave_marker = L.circle([0.84872422 * imageHeight, 0.884199099 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(shoalCave_popup, popupOptions)
 
@@ -4260,9 +4276,9 @@ var skyPillar_popup = L.popup().setContent(`
     </div>
 `);
 
-var skyPillar_marker = L.circle([0.405312502* imageHeight, 0.748541666* imageWidth], Math.sqrt((0.00130899692 * (imageHeight * imageWidth)) / Math.PI),
+var skyPillar_marker = L.circle([0.405312502 * imageHeight, 0.748541666 * imageWidth], Math.sqrt((0.00130899692 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(skyPillar_popup, popupOptions)
 
@@ -4353,9 +4369,9 @@ var victoryRoad_popup = L.popup().setContent(`
     </div>
 `);
 
-var victoryRoad_marker = L.circle([0.555* imageHeight, 0.938958333* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+var victoryRoad_marker = L.circle([0.555 * imageHeight, 0.938958333 * imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
     {
-    color: 'red'
+        opacity: 0, fillOpacity: 0
     }
 ).addTo(map).bindPopup(victoryRoad_popup, popupOptions)
 
@@ -4367,21 +4383,21 @@ if (Math.random() < 0.05) {
 } else {
     treeckoImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/treecko.gif";
 }
-L.imageOverlay(treeckoImg, [[0.28937 * imageHeight, 0.17333* imageWidth], [(0.28937 * imageHeight) + 22.38608, (0.17333* imageWidth) + 15.63472]]).addTo(map);
+L.imageOverlay(treeckoImg, [[0.28937 * imageHeight, 0.17333 * imageWidth], [(0.28937 * imageHeight) + (0.0279826 * imageHeight), (0.17333 * imageWidth) + (0.0130289333333333 * imageWidth)]]).addTo(map);
 
 if (Math.random() < 0.05) {
     torchicImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/torchic.gif";
 } else {
     torchicImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/torchic.gif";
 }
-L.imageOverlay(torchicImg, [[0.24968 * imageHeight, 0.18848* imageWidth], [(0.24968 * imageHeight) + 21.76073, (0.18848* imageWidth) + 16.08402]]).addTo(map);
+L.imageOverlay(torchicImg, [[0.24968 * imageHeight, 0.18848 * imageWidth], [(0.24968 * imageHeight) + (0.0272009125 * imageHeight), (0.18848 * imageWidth) + (0.01340335 * imageWidth)]]).addTo(map);
 
 if (Math.random() < 0.05) {
     mudkipImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/mudkip.gif";
 } else {
     mudkipImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/mudkip.gif";
 }
-L.imageOverlay(mudkipImg, [[0.28468 * imageHeight, 0.21369* imageWidth], [(0.28468 * imageHeight) + 19.74266, (0.21369* imageWidth) + 17.7281]]).addTo(map);
+L.imageOverlay(mudkipImg, [[0.28468 * imageHeight, 0.21369 * imageWidth], [(0.28468 * imageHeight) + (0.024678325 * imageHeight), (0.21369 * imageWidth) + (0.0147734166666667 * imageWidth)]]).addTo(map);
 
 // Rayquaza
 if (Math.random() < 0.05) {
@@ -4389,7 +4405,7 @@ if (Math.random() < 0.05) {
 } else {
     rayquazaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/rayquaza.gif";
 }
-L.imageOverlay(rayquazaImg, [[0.425 * imageHeight, 0.735* imageWidth], [(0.425 * imageHeight) + 29.69542, (0.735* imageWidth) + 33.67522]]).addTo(map);
+L.imageOverlay(rayquazaImg, [[0.425 * imageHeight, 0.735 * imageWidth], [(0.425 * imageHeight) + (0.037119275 * imageHeight), (0.735 * imageWidth) + (0.0280626833333333 * imageWidth)]]).addTo(map);
 
 // Latias and Latios
 if (Math.random() < 0.05) {
@@ -4397,14 +4413,14 @@ if (Math.random() < 0.05) {
 } else {
     latiosImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/latios.gif";
 }
-L.imageOverlay(latiosImg, [[0.13812 * imageHeight, 0.42307* imageWidth], [(0.13812 * imageHeight) + 23.03316, (0.42307* imageWidth) + 26.04941]]).addTo(map);
+L.imageOverlay(latiosImg, [[0.13812 * imageHeight, 0.42307 * imageWidth], [(0.13812 * imageHeight) + (0.02879145 * imageHeight), (0.42307 * imageWidth) + (0.0217078416666667 * imageWidth)]]).addTo(map);
 
 if (Math.random() < 0.05) {
     latiasImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/latias.gif";
 } else {
     latiasImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/latias.gif";
 }
-L.imageOverlay(latiasImg, [[0.1125 * imageHeight, 0.475* imageWidth], [(0.1125 * imageHeight) + 20.47816, (0.475* imageWidth) + 29.29952]]).addTo(map);
+L.imageOverlay(latiasImg, [[0.1125 * imageHeight, 0.475 * imageWidth], [(0.1125 * imageHeight) + (0.0255977 * imageHeight), (0.475 * imageWidth) + (0.0244162666666667 * imageWidth)]]).addTo(map);
 
 /// Other Pokemon with custom probability
 // Wingull_1
@@ -4414,7 +4430,7 @@ if (Math.random() < 0.75) {
     } else {
         wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
     }
-    L.imageOverlay(wingullImg, [[0.33437 * imageHeight, 0.07135* imageWidth], [(0.33437 * imageHeight) + 15.68738, (0.07135* imageWidth) + 22.31094]]).addTo(map);
+    L.imageOverlay(wingullImg, [[0.33437 * imageHeight, 0.07135 * imageWidth], [(0.33437 * imageHeight) + (0.019609225 * imageHeight), (0.07135 * imageWidth) + (0.01859245 * imageWidth)]]).addTo(map);
 }
 
 
@@ -4425,7 +4441,7 @@ if (Math.random() < 0.75) {
     } else {
         wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
     }
-    L.imageOverlay(wingullImg, [[0.2739 * imageHeight, 0.33166* imageWidth], [(0.2739 * imageHeight) + 15.68738, (0.33166* imageWidth) + 22.31094]]).addTo(map);
+    L.imageOverlay(wingullImg, [[0.2739 * imageHeight, 0.33166 * imageWidth], [(0.2739 * imageHeight) + (0.019609225 * imageHeight), (0.33166 * imageWidth) + (0.01859245 * imageWidth)]]).addTo(map);
 }
 
 // Wingull_3
@@ -4435,7 +4451,7 @@ if (Math.random() < 0.75) {
     } else {
         wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
     }
-    L.imageOverlay(wingullImg, [[0.71624 * imageHeight, 0.72416* imageWidth], [(0.71624 * imageHeight) + 15.68738, (0.72416* imageWidth) + 22.31094]]).addTo(map);
+    L.imageOverlay(wingullImg, [[0.71624 * imageHeight, 0.72416 * imageWidth], [(0.71624 * imageHeight) + (0.019609225 * imageHeight), (0.72416 * imageWidth) + (0.01859245 * imageWidth)]]).addTo(map);
 }
 
 // Wingull_4
@@ -4445,7 +4461,7 @@ if (Math.random() < 0.75) {
     } else {
         wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
     }
-    L.imageOverlay(wingullImg, [[0.40281 * imageHeight, 0.62832* imageWidth], [(0.40281 * imageHeight) + 15.68738, (0.62832* imageWidth) + 22.31094]]).addTo(map);
+    L.imageOverlay(wingullImg, [[0.40281 * imageHeight, 0.62832 * imageWidth], [(0.40281 * imageHeight) + (0.019609225 * imageHeight), (0.62832 * imageWidth) + (0.01859245 * imageWidth)]]).addTo(map);
 
 }
 
@@ -4457,7 +4473,7 @@ if (Math.random() < 0.75) {
         wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
     }
 }
-L.imageOverlay(wingullImg, [[0.47624 * imageHeight, 0.87332* imageWidth], [(0.47624 * imageHeight) + 15.68738, (0.87332* imageWidth) + 22.31094]]).addTo(map);
+L.imageOverlay(wingullImg, [[0.47624 * imageHeight, 0.87332 * imageWidth], [(0.47624 * imageHeight) + (0.019609225 * imageHeight), (0.87332 * imageWidth) + (0.01859245 * imageWidth)]]).addTo(map);
 
 // Wingull_6
 if (Math.random() < 0.75) {
@@ -4467,7 +4483,7 @@ if (Math.random() < 0.75) {
         wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
     }
 }
-L.imageOverlay(wingullImg, [[0.70187 * imageHeight, 0.06791* imageWidth], [(0.70187 * imageHeight) + 15.68738, (0.06791* imageWidth) + 22.31094]]).addTo(map);
+L.imageOverlay(wingullImg, [[0.70187 * imageHeight, 0.06791 * imageWidth], [(0.70187 * imageHeight) + (0.019609225 * imageHeight), (0.06791 * imageWidth) + (0.01859245 * imageWidth)]]).addTo(map);
 
 // Duskull
 if (Math.random() < 0.75) {
@@ -4476,7 +4492,7 @@ if (Math.random() < 0.75) {
     } else {
         duskullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/duskull.gif";
     }
-    L.imageOverlay(duskullImg, [[0.66968 * imageHeight, 0.57478* imageWidth], [(0.66968 * imageHeight) + 17.57338, (0.57478* imageWidth) + 19.9165]]).addTo(map);
+    L.imageOverlay(duskullImg, [[0.66968 * imageHeight, 0.57478 * imageWidth], [(0.66968 * imageHeight) + (0.021966725 * imageHeight), (0.57478 * imageWidth) + (0.0165970833333333 * imageWidth)]]).addTo(map);
 }
 
 // Shuppet
@@ -4486,7 +4502,7 @@ if (Math.random() < 0.75) {
     } else {
         shuppetImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/shuppet.gif";
     }
-    L.imageOverlay(shuppetImg, [[0.70562 * imageHeight, 0.62082* imageWidth], [(0.70562 * imageHeight) + 22.81475, (0.62082* imageWidth) + 15.34095]]).addTo(map);
+    L.imageOverlay(shuppetImg, [[0.70562 * imageHeight, 0.62082 * imageWidth], [(0.70562 * imageHeight) + (0.0285184375 * imageHeight), (0.62082 * imageWidth) + (0.012784125 * imageWidth)]]).addTo(map);
 }
 
 // Torkoal
@@ -4496,7 +4512,7 @@ if (Math.random() < 0.75) {
     } else {
         torkoalImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/torkoal.gif";
     }
-    L.imageOverlay(torkoalImg, [[0.82781 * imageHeight, 0.20833* imageWidth], [(0.82781 * imageHeight) + 22.5347, (0.20833* imageWidth) + 22.18801]]).addTo(map);
+    L.imageOverlay(torkoalImg, [[0.82781 * imageHeight, 0.20833 * imageWidth], [(0.82781 * imageHeight) + (0.028168375 * imageHeight), (0.20833 * imageWidth) + (0.0184900083333333 * imageWidth)]]).addTo(map);
 }
 
 // Meditite
@@ -4506,7 +4522,7 @@ if (Math.random() < 0.75) {
     } else {
         medititeImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/meditite.gif";
     }
-    L.imageOverlay(medititeImg, [[0.82499 * imageHeight, 0.1625* imageWidth], [(0.82499 * imageHeight) + 20.72548, (0.1625* imageWidth) + 16.88743]]).addTo(map);
+    L.imageOverlay(medititeImg, [[0.82499 * imageHeight, 0.1625 * imageWidth], [(0.82499 * imageHeight) + (0.02590685 * imageHeight), (0.1625 * imageWidth) + (0.0140728583333333 * imageWidth)]]).addTo(map);
 }
 
 
@@ -4517,7 +4533,7 @@ if (Math.random() < 0.75) {
     } else {
         carvanhaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/carvanha.gif";
     }
-    L.imageOverlay(carvanhaImg, [[0.45 * imageHeight, 0.22333* imageWidth], [(0.45 * imageHeight) + 13.64576, (0.22333* imageWidth) + 14.65656]]).addTo(map);
+    L.imageOverlay(carvanhaImg, [[0.45 * imageHeight, 0.22333 * imageWidth], [(0.45 * imageHeight) + (0.0170572 * imageHeight), (0.22333 * imageWidth) + (0.0122138 * imageWidth)]]).addTo(map);
 }
 
 // Carvanha_2
@@ -4527,7 +4543,7 @@ if (Math.random() < 0.75) {
     } else {
         carvanhaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/carvanha.gif";
     }
-    L.imageOverlay(carvanhaImg, [[0.5775 * imageHeight, 0.36499* imageWidth], [(0.5775 * imageHeight) + 13.64576, (0.36499* imageWidth) + 14.65656]]).addTo(map);
+    L.imageOverlay(carvanhaImg, [[0.5775 * imageHeight, 0.36499 * imageWidth], [(0.5775 * imageHeight) + (0.0170572 * imageHeight), (0.36499 * imageWidth) + (0.0122138 * imageWidth)]]).addTo(map);
 }
 
 // Sharpedo
@@ -4537,7 +4553,7 @@ if (Math.random() < 0.50) {
     } else {
         sharpedoImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/sharpedo.gif";
     }
-    L.imageOverlay(sharpedoImg, [[0.30936 * imageHeight, 0.83373* imageWidth], [(0.30936 * imageHeight) + 24.4949, (0.83373* imageWidth) + 24.4949]]).addTo(map);
+    L.imageOverlay(sharpedoImg, [[0.30936 * imageHeight, 0.83373 * imageWidth], [(0.30936 * imageHeight) + (0.030618625 * imageHeight), (0.83373 * imageWidth) + (0.0204124166666667 * imageWidth)]]).addTo(map);
 }
 
 // Cacnea
@@ -4547,7 +4563,7 @@ if (Math.random() < 0.75) {
     } else {
         cacneaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/cacnea.gif";
     }
-    L.imageOverlay(cacneaImg, [[0.83367 * imageHeight, 0.33291* imageWidth], [(0.83367 * imageHeight) + 11.78911, (0.33291* imageWidth) + 16.96482]]).addTo(map);
+    L.imageOverlay(cacneaImg, [[0.83367 * imageHeight, 0.33291 * imageWidth], [(0.83367 * imageHeight) + (0.0147363875 * imageHeight), (0.33291 * imageWidth) + (0.01413735 * imageWidth)]]).addTo(map);
 }
 
 // Trapinch
@@ -4557,7 +4573,7 @@ if (Math.random() < 0.75) {
     } else {
         trapinchImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/trapinch.gif";
     }
-    L.imageOverlay(trapinchImg, [[0.78086 * imageHeight, 0.34541* imageWidth], [(0.78086 * imageHeight) + 14.49138, (0.34541* imageWidth) + 13.80131]]).addTo(map);
+    L.imageOverlay(trapinchImg, [[0.78086 * imageHeight, 0.34541 * imageWidth], [(0.78086 * imageHeight) + (0.018114225 * imageHeight), (0.34541 * imageWidth) + (0.0115010916666667 * imageWidth)]]).addTo(map);
 }
 
 // Absol
@@ -4567,7 +4583,7 @@ if (Math.random() < 0.25) {
     } else {
         absolImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/absol.gif";
     }
-    L.imageOverlay(absolImg, [[0.82055 * imageHeight, 0.46332* imageWidth], [(0.82055 * imageHeight) + 20.8843, (0.46332* imageWidth) + 21.54729]]).addTo(map);
+    L.imageOverlay(absolImg, [[0.82055 * imageHeight, 0.46332 * imageWidth], [(0.82055 * imageHeight) + (0.026105375 * imageHeight), (0.46332 * imageWidth) + (0.017956075 * imageWidth)]]).addTo(map);
 }
 
 // Oddish
@@ -4577,7 +4593,7 @@ if (Math.random() < 1) {
     } else {
         oddishImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/oddish.gif";
     }
-    L.imageOverlay(oddishImg, [[0.8286 * imageHeight, 0.53331* imageWidth], [(0.8286 * imageHeight) + 16.22214, (0.53331* imageWidth) + 12.32883]]).addTo(map);
+    L.imageOverlay(oddishImg, [[0.8286 * imageHeight, 0.53331 * imageWidth], [(0.8286 * imageHeight) + (0.020277675 * imageHeight), (0.53331 * imageWidth) + (0.010274025 * imageWidth)]]).addTo(map);
 }
 
 // Mightyena
@@ -4587,7 +4603,7 @@ if (Math.random() < 0.75) {
     } else {
         mightyenaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/mightyena.gif";
     }
-    L.imageOverlay(mightyenaImg, [[0.73985 * imageHeight, 0.51748* imageWidth], [(0.73985 * imageHeight) + 19.86254, (0.51748* imageWidth) + 22.65571]]).addTo(map);
+    L.imageOverlay(mightyenaImg, [[0.73985 * imageHeight, 0.51748 * imageWidth], [(0.73985 * imageHeight) + (0.024828175 * imageHeight), (0.51748 * imageWidth) + (0.0188797583333333 * imageWidth)]]).addTo(map);
 }
 
 // Linoone
@@ -4597,7 +4613,7 @@ if (Math.random() < 0.75) {
     } else {
         linooneImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/linoone.gif";
     }
-    L.imageOverlay(linooneImg, [[0.66774 * imageHeight, 0.43103* imageWidth], [(0.66774 * imageHeight) + 14.22916, (0.43103* imageWidth) + 28.11127]]).addTo(map);
+    L.imageOverlay(linooneImg, [[0.66774 * imageHeight, 0.43103 * imageWidth], [(0.66774 * imageHeight) + (0.01778645 * imageHeight), (0.43103 * imageWidth) + (0.0234260583333333 * imageWidth)]]).addTo(map);
 }
 
 // Tropius
@@ -4607,7 +4623,7 @@ if (Math.random() < 0.50) {
     } else {
         tropiusImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/tropius.gif";
     }
-    L.imageOverlay(tropiusImg, [[0.89805 * imageHeight, 0.38124* imageWidth], [(0.89805 * imageHeight) + 26.09312, (0.38124* imageWidth) + 30.65942]]).addTo(map);
+    L.imageOverlay(tropiusImg, [[0.89805 * imageHeight, 0.38124 * imageWidth], [(0.89805 * imageHeight) + (0.0326164 * imageHeight), (0.38124 * imageWidth) + (0.0255495166666667 * imageWidth)]]).addTo(map);
 }
 
 // Skarmory
@@ -4617,7 +4633,7 @@ if (Math.random() < 0.40) {
     } else {
         skarmoryImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/skarmory.gif";
     }
-    L.imageOverlay(skarmoryImg, [[0.92149 * imageHeight, 0.26395* imageWidth], [(0.92149 * imageHeight) + 28.28427, (0.26395* imageWidth) + 28.28427]]).addTo(map);
+    L.imageOverlay(skarmoryImg, [[0.92149 * imageHeight, 0.26395 * imageWidth], [(0.92149 * imageHeight) + (0.0353553375 * imageHeight), (0.26395 * imageWidth) + (0.023570225 * imageWidth)]]).addTo(map);
 }
 
 // Barboach
@@ -4627,7 +4643,7 @@ if (Math.random() < 0.75) {
     } else {
         barboachImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/barboach.gif";
     }
-    L.imageOverlay(barboachImg, [[0.88555 * imageHeight, 0.13082* imageWidth], [(0.88555 * imageHeight) + 12.07615, (0.13082* imageWidth) + 16.56158]]).addTo(map);
+    L.imageOverlay(barboachImg, [[0.88555 * imageHeight, 0.13082 * imageWidth], [(0.88555 * imageHeight) + (0.0150951875 * imageHeight), (0.13082 * imageWidth) + (0.0138013166666667 * imageWidth)]]).addTo(map);
 }
 
 // Lombre
@@ -4637,7 +4653,7 @@ if (Math.random() < 0.75) {
     } else {
         lombreImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/lombre.gif";
     }
-    L.imageOverlay(lombreImg, [[0.91555 * imageHeight, 0.13603* imageWidth], [(0.91555 * imageHeight) + 20.39608, (0.13603* imageWidth) + 19.61162]]).addTo(map);
+    L.imageOverlay(lombreImg, [[0.91555 * imageHeight, 0.13603 * imageWidth], [(0.91555 * imageHeight) + (0.0254951 * imageHeight), (0.13603 * imageWidth) + (0.0163430166666667 * imageWidth)]]).addTo(map);
 }
 
 // Wurmple
@@ -4647,7 +4663,7 @@ if (Math.random() < 0.99) {
     } else {
         wurmpleImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wurmple.gif";
     }
-    L.imageOverlay(wurmpleImg, [[0.40652 * imageHeight, 0.08593* imageWidth], [(0.40652 * imageHeight) + 13.47512, (0.08593* imageWidth) + 11.13162]]).addTo(map);
+    L.imageOverlay(wurmpleImg, [[0.40652 * imageHeight, 0.08593 * imageWidth], [(0.40652 * imageHeight) + (0.0168439 * imageHeight), (0.08593 * imageWidth) + (0.00927635 * imageWidth)]]).addTo(map);
 }
 
 // Slakoth
@@ -4657,7 +4673,7 @@ if (Math.random() < 0.50) {
     } else {
         slakothImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/slakoth.gif";
     }
-    L.imageOverlay(slakothImg, [[0.43574 * imageHeight, 0.10833* imageWidth], [(0.43574 * imageHeight) + 13.37334, (0.10833* imageWidth) + 22.4327]]).addTo(map);
+    L.imageOverlay(slakothImg, [[0.43574 * imageHeight, 0.10833 * imageWidth], [(0.43574 * imageHeight) + (0.016716675 * imageHeight), (0.10833 * imageWidth) + (0.0186939166666667 * imageWidth)]]).addTo(map);
 }
 
 // Swellow
@@ -4667,7 +4683,7 @@ if (Math.random() < 42069) {
     } else {
         swellowImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/swellow.gif";
     }
-    L.imageOverlay(swellowImg, [[0.52985 * imageHeight, 0.17539* imageWidth], [(0.52985 * imageHeight) + 17.9802, (0.17539* imageWidth) + 22.24669]]).addTo(map);
+    L.imageOverlay(swellowImg, [[0.52985 * imageHeight, 0.17539 * imageWidth], [(0.52985 * imageHeight) + (0.02247525 * imageHeight), (0.17539 * imageWidth) + (0.0185389083333333 * imageWidth)]]).addTo(map);
 }
 
 // Numel
@@ -4677,7 +4693,7 @@ if (Math.random() < 0.50) {
     } else {
         numelImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/numel.gif";
     }
-    L.imageOverlay(numelImg, [[0.82302 * imageHeight, 0.285* imageWidth], [(0.82302 * imageHeight) + 15.81139, (0.285* imageWidth) + 15.81139]]).addTo(map);
+    L.imageOverlay(numelImg, [[0.82302 * imageHeight, 0.285 * imageWidth], [(0.82302 * imageHeight) + (0.0197642375 * imageHeight), (0.285 * imageWidth) + (0.0131761583333333 * imageWidth)]]).addTo(map);
 }
 
 // Marill
@@ -4687,7 +4703,7 @@ if (Math.random() < 0.75) {
     } else {
         marillImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/marill.gif";
     }
-    L.imageOverlay(marillImg, [[0.68427 * imageHeight, 0.29375* imageWidth], [(0.68427 * imageHeight) + 11.86342, (0.29375* imageWidth) + 16.85854]]).addTo(map);
+    L.imageOverlay(marillImg, [[0.68427 * imageHeight, 0.29375 * imageWidth], [(0.68427 * imageHeight) + (0.014829275 * imageHeight), (0.29375 * imageWidth) + (0.0140487833333333 * imageWidth)]]).addTo(map);
 }
 
 // Volbeat
@@ -4697,7 +4713,7 @@ if (Math.random() < 0.75) {
     } else {
         volbeatImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/volbeat.gif";
     }
-    L.imageOverlay(volbeatImg, [[0.63375 * imageHeight, 0.23254* imageWidth], [(0.63375 * imageHeight) + 13.11011, (0.23254* imageWidth) + 15.2554]]).addTo(map);
+    L.imageOverlay(volbeatImg, [[0.63375 * imageHeight, 0.23254 * imageWidth], [(0.63375 * imageHeight) + (0.0163876375 * imageHeight), (0.23254 * imageWidth) + (0.0127128333333333 * imageWidth)]]).addTo(map);
 }
 
 // Illumise
@@ -4707,7 +4723,7 @@ if (Math.random() < 0.75) {
     } else {
         illumiseImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/illumise.gif";
     }
-    L.imageOverlay(illumiseImg, [[0.59688 * imageHeight, 0.26046* imageWidth], [(0.59688 * imageHeight) + 13.87777, (0.26046* imageWidth) + 14.41153]]).addTo(map);
+    L.imageOverlay(illumiseImg, [[0.59688 * imageHeight, 0.26046 * imageWidth], [(0.59688 * imageHeight) + (0.0173472125 * imageHeight), (0.26046 * imageWidth) + (0.0120096083333333 * imageWidth)]]).addTo(map);
 }
 
 // Geodude
@@ -4717,7 +4733,7 @@ if (Math.random() < 0.90) {
     } else {
         geodudeImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/geodude.gif";
     }
-    L.imageOverlay(geodudeImg, [[0.70594 * imageHeight, 0.339* imageWidth], [(0.70594 * imageHeight) + 13.58036, (0.339* imageWidth) + 18.40893]]).addTo(map);
+    L.imageOverlay(geodudeImg, [[0.70594 * imageHeight, 0.339 * imageWidth], [(0.70594 * imageHeight) + (0.01697545 * imageHeight), (0.339 * imageWidth) + (0.015340775 * imageWidth)]]).addTo(map);
 }
 
 // Feebas
@@ -4727,7 +4743,7 @@ if (Math.random() < 0.10) {
     } else {
         feebasImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/feebas.gif";
     }
-    L.imageOverlay(feebasImg, [[0.77328 * imageHeight, 0.41221* imageWidth], [(0.77328 * imageHeight) + 16.5434, (0.41221* imageWidth) + 12.08941]]).addTo(map);
+    L.imageOverlay(feebasImg, [[0.77328 * imageHeight, 0.41221 * imageWidth], [(0.77328 * imageHeight) + (0.02067925 * imageHeight), (0.41221 * imageWidth) + (0.0100745083333333 * imageWidth)]]).addTo(map);
 }
 
 // Kecleon
@@ -4737,7 +4753,7 @@ if (Math.random() < 0.50) {
     } else {
         kecleonImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/kecleon.gif";
     }
-    L.imageOverlay(kecleonImg, [[0.70375 * imageHeight, 0.37212* imageWidth], [(0.70375 * imageHeight) + 18.39732, (0.37212* imageWidth) + 21.74229]]).addTo(map);
+    L.imageOverlay(kecleonImg, [[0.70375 * imageHeight, 0.37212 * imageWidth], [(0.70375 * imageHeight) + (0.02299665 * imageHeight), (0.37212 * imageWidth) + (0.018118575 * imageWidth)]]).addTo(map);
 }
 
 // Electrike
@@ -4747,7 +4763,7 @@ if (Math.random() < 0.90) {
     } else {
         electrikeImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/electrike.gif";
     }
-    L.imageOverlay(electrikeImg, [[0.58125 * imageHeight, 0.42587* imageWidth], [(0.58125 * imageHeight) + 13.41641, (0.42587* imageWidth) + 18.6339]]).addTo(map);
+    L.imageOverlay(electrikeImg, [[0.58125 * imageHeight, 0.42587 * imageWidth], [(0.58125 * imageHeight) + (0.0167705125 * imageHeight), (0.42587 * imageWidth) + (0.01552825 * imageWidth)]]).addTo(map);
 }
 
 // Taillow
@@ -4757,7 +4773,7 @@ if (Math.random() < 0.90) {
     } else {
         taillowImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/taillow.gif";
     }
-    L.imageOverlay(taillowImg, [[0.59813 * imageHeight, 0.11008* imageWidth], [(0.59813 * imageHeight) + 12.79204, (0.11008* imageWidth) + 15.63472]]).addTo(map);
+    L.imageOverlay(taillowImg, [[0.59813 * imageHeight, 0.11008 * imageWidth], [(0.59813 * imageHeight) + (0.01599005 * imageHeight), (0.11008 * imageWidth) + (0.0130289333333333 * imageWidth)]]).addTo(map);
 }
 
 // Ralts
@@ -4767,7 +4783,7 @@ if (Math.random() < 0.40) {
     } else {
         raltsImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/ralts.gif";
     }
-    L.imageOverlay(raltsImg, [[0.38281 * imageHeight, 0.14212* imageWidth], [(0.38281 * imageHeight) + 17.22612, (0.14212* imageWidth) + 10.15899]]).addTo(map);
+    L.imageOverlay(raltsImg, [[0.38281 * imageHeight, 0.14212 * imageWidth], [(0.38281 * imageHeight) + (0.02153265 * imageHeight), (0.14212 * imageWidth) + (0.008465825 * imageWidth)]]).addTo(map);
 }
 
 // Seedot
@@ -4777,7 +4793,7 @@ if (Math.random() < 0.80) {
     } else {
         seedotImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/seedot.gif";
     }
-    L.imageOverlay(seedotImg, [[0.3875 * imageHeight, 0.16546* imageWidth], [(0.3875 * imageHeight) + 14.73577, (0.16546* imageWidth) + 13.57242]]).addTo(map);
+    L.imageOverlay(seedotImg, [[0.3875 * imageHeight, 0.16546 * imageWidth], [(0.3875 * imageHeight) + (0.0184197125 * imageHeight), (0.16546 * imageWidth) + (0.01131035 * imageWidth)]]).addTo(map);
 }
 
 // Zigzagoon
@@ -4787,7 +4803,7 @@ if (Math.random() < 0.80) {
     } else {
         zigzagoonImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/zigzagoon.gif";
     }
-    L.imageOverlay(zigzagoonImg, [[0.44969 * imageHeight, 0.18483* imageWidth], [(0.44969 * imageHeight) + 12.03443, (0.18483* imageWidth) + 16.61897]]).addTo(map);
+    L.imageOverlay(zigzagoonImg, [[0.44969 * imageHeight, 0.18483 * imageWidth], [(0.44969 * imageHeight) + (0.0150430375 * imageHeight), (0.18483 * imageWidth) + (0.0138491416666667 * imageWidth)]]).addTo(map);
 }
 
 // Poochyena
@@ -4797,7 +4813,7 @@ if (Math.random() < 0.80) {
     } else {
         poochyenaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/poochyena.gif";
     }
-    L.imageOverlay(poochyenaImg, [[0.43219 * imageHeight, 0.20566* imageWidth], [(0.43219 * imageHeight) + 13.00887, (0.20566* imageWidth) + 15.37412]]).addTo(map);
+    L.imageOverlay(poochyenaImg, [[0.43219 * imageHeight, 0.20566 * imageWidth], [(0.43219 * imageHeight) + (0.0162610875 * imageHeight), (0.20566 * imageWidth) + (0.0128117666666667 * imageWidth)]]).addTo(map);
 }
 
 // Hariyama
@@ -4807,7 +4823,7 @@ if (Math.random() < 0.50) {
     } else {
         hariyamaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/hariyama.gif";
     }
-    L.imageOverlay(hariyamaImg, [[0.1125 * imageHeight, 0.08421* imageWidth], [(0.1125 * imageHeight) + 26.79891, (0.08421* imageWidth) + 29.85195]]).addTo(map);
+    L.imageOverlay(hariyamaImg, [[0.1125 * imageHeight, 0.08421 * imageWidth], [(0.1125 * imageHeight) + (0.0334986375 * imageHeight), (0.08421 * imageWidth) + (0.024876625 * imageWidth)]]).addTo(map);
 }
 
 // Nosepass
@@ -4817,7 +4833,7 @@ if (Math.random() < 0.30) {
     } else {
         nosepassImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/nosepass.gif";
     }
-    L.imageOverlay(nosepassImg, [[0.06625 * imageHeight, 0.05924* imageWidth], [(0.06625 * imageHeight) + 20.93072, (0.05924* imageWidth) + 19.11066]]).addTo(map);
+    L.imageOverlay(nosepassImg, [[0.06625 * imageHeight, 0.05924 * imageWidth], [(0.06625 * imageHeight) + (0.0261634 * imageHeight), (0.05924 * imageWidth) + (0.01592555 * imageWidth)]]).addTo(map);
 }
 
 // Corsola
@@ -4827,7 +4843,7 @@ if (Math.random() < 0.50) {
     } else {
         corsolaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/corsola.gif";
     }
-    L.imageOverlay(corsolaImg, [[0.41781 * imageHeight, 0.91171* imageWidth], [(0.41781 * imageHeight) + 14.54436, (0.91171* imageWidth) + 17.18879]]).addTo(map);
+    L.imageOverlay(corsolaImg, [[0.41781 * imageHeight, 0.91171 * imageWidth], [(0.41781 * imageHeight) + (0.01818045 * imageHeight), (0.91171 * imageWidth) + (0.0143239916666667 * imageWidth)]]).addTo(map);
 }
 
 // Sealeo
@@ -4837,7 +4853,7 @@ if (Math.random() < 0.75) {
     } else {
         sealeoImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/sealeo.gif";
     }
-    L.imageOverlay(sealeoImg, [[0.79375 * imageHeight, 0.794* imageWidth], [(0.79375 * imageHeight) + 20.9477, (0.794* imageWidth) + 28.64277]]).addTo(map);
+    L.imageOverlay(sealeoImg, [[0.79375 * imageHeight, 0.794 * imageWidth], [(0.79375 * imageHeight) + (0.026184625 * imageHeight), (0.794 * imageWidth) + (0.023868975 * imageWidth)]]).addTo(map);
 }
 
 // Beldum
@@ -4847,7 +4863,7 @@ if (Math.random() < 0.75) {
     } else {
         beldumImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/beldum.gif";
     }
-    L.imageOverlay(beldumImg, [[0.725 * imageHeight, 0.89608* imageWidth], [(0.725 * imageHeight) + 16.95582, (0.89608* imageWidth) + 17.69303]]).addTo(map);
+    L.imageOverlay(beldumImg, [[0.725 * imageHeight, 0.89608 * imageWidth], [(0.725 * imageHeight) + (0.021194775 * imageHeight), (0.89608 * imageWidth) + (0.0147441916666667 * imageWidth)]]).addTo(map);
 }
 
 // Clamperl
@@ -4857,7 +4873,7 @@ if (Math.random() < 0.90) {
     } else {
         clamperlImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/clamperl.gif";
     }
-    L.imageOverlay(clamperlImg, [[0.59125 * imageHeight, 0.78341* imageWidth], [(0.59125 * imageHeight) + 16.7332, (0.78341* imageWidth) + 17.92843]]).addTo(map);
+    L.imageOverlay(clamperlImg, [[0.59125 * imageHeight, 0.78341 * imageWidth], [(0.59125 * imageHeight) + (0.0209165 * imageHeight), (0.78341 * imageWidth) + (0.0149403583333333 * imageWidth)]]).addTo(map);
 }
 
 // Relicanth
@@ -4867,7 +4883,7 @@ if (Math.random() < 0.25) {
     } else {
         relicanthImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/relicanth.gif";
     }
-    L.imageOverlay(relicanthImg, [[0.49875 * imageHeight, 0.75299* imageWidth], [(0.49875 * imageHeight) + 22.77376, (0.75299* imageWidth) + 26.34611]]).addTo(map);
+    L.imageOverlay(relicanthImg, [[0.49875 * imageHeight, 0.75299 * imageWidth], [(0.49875 * imageHeight) + (0.0284672 * imageHeight), (0.75299 * imageWidth) + (0.0219550916666667 * imageWidth)]]).addTo(map);
 }
 
 // Chinchou
@@ -4877,7 +4893,7 @@ if (Math.random() < 0.80) {
     } else {
         chinchouImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/chinchou.gif";
     }
-    L.imageOverlay(chinchouImg, [[0.57438 * imageHeight, 0.71924* imageWidth], [(0.57438 * imageHeight) + 15.52125, (0.71924* imageWidth) + 19.32835]]).addTo(map);
+    L.imageOverlay(chinchouImg, [[0.57438 * imageHeight, 0.71924 * imageWidth], [(0.57438 * imageHeight) + (0.0194015625 * imageHeight), (0.71924 * imageWidth) + (0.0161069583333333 * imageWidth)]]).addTo(map);
 }
 
 // Luvdisc
@@ -4887,7 +4903,7 @@ if (Math.random() < 0.75) {
     } else {
         luvdiscImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/luvdisc.gif";
     }
-    L.imageOverlay(luvdiscImg, [[0.53938 * imageHeight, 0.83383* imageWidth], [(0.53938 * imageHeight) + 19.23538, (0.83383* imageWidth) + 15.59625]]).addTo(map);
+    L.imageOverlay(luvdiscImg, [[0.53938 * imageHeight, 0.83383 * imageWidth], [(0.53938 * imageHeight) + (0.024044225 * imageHeight), (0.83383 * imageWidth) + (0.012996875 * imageWidth)]]).addTo(map);
 }
 
 // Pelipper
@@ -4897,7 +4913,7 @@ if (Math.random() < 0.90) {
     } else {
         pelipperImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/pelipper.gif";
     }
-    L.imageOverlay(pelipperImg, [[0.34125 * imageHeight, 0.48174* imageWidth], [(0.34125 * imageHeight) + 21.79449, (0.48174* imageWidth) + 27.52988]]).addTo(map);
+    L.imageOverlay(pelipperImg, [[0.34125 * imageHeight, 0.48174 * imageWidth], [(0.34125 * imageHeight) + (0.0272431125 * imageHeight), (0.48174 * imageWidth) + (0.0229415666666667 * imageWidth)]]).addTo(map);
 }
 
 // Tentacool_1
@@ -4907,7 +4923,7 @@ if (Math.random() < 0.99) {
     } else {
         tentacoolImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/tentacool.gif";
     }
-    L.imageOverlay(tentacoolImg, [[0.29 * imageHeight, 0.51266* imageWidth], [(0.29 * imageHeight) + 20.35109, (0.51266* imageWidth) + 17.1981]]).addTo(map);
+    L.imageOverlay(tentacoolImg, [[0.29 * imageHeight, 0.51266 * imageWidth], [(0.29 * imageHeight) + (0.0254388625 * imageHeight), (0.51266 * imageWidth) + (0.01433175 * imageWidth)]]).addTo(map);
 }
 
 // Tentacool_2
@@ -4917,7 +4933,7 @@ if (Math.random() < 0.99) {
     } else {
         tentacoolImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/tentacool.gif";
     }
-    L.imageOverlay(tentacoolImg, [[0.4925 * imageHeight, 0.63849* imageWidth], [(0.4925 * imageHeight) + 20.35109, (0.63849* imageWidth) + 17.1981]]).addTo(map);
+    L.imageOverlay(tentacoolImg, [[0.4925 * imageHeight, 0.63849 * imageWidth], [(0.4925 * imageHeight) + (0.0254388625 * imageHeight), (0.63849 * imageWidth) + (0.01433175 * imageWidth)]]).addTo(map);
 }
 
 // Tentacruel
@@ -4927,12 +4943,46 @@ if (Math.random() < 0.60) {
     } else {
         tentacruelImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/tentacruel.gif";
     }
-    L.imageOverlay(tentacruelImg, [[0.21375 * imageHeight, 0.76099* imageWidth], [(0.21375 * imageHeight) + 28.28427, (0.76099* imageWidth) + 28.28427]]).addTo(map);
+    L.imageOverlay(tentacruelImg, [[0.21375 * imageHeight, 0.76099 * imageWidth], [(0.21375 * imageHeight) + (0.0353553375 * imageHeight), (0.76099 * imageWidth) + (0.023570225 * imageWidth)]]).addTo(map);
 }
 
 // FUNCTIONALITY
 map.on('click', function (e) {
     console.log(e.latlng.lat, e.latlng.lng);
+});
+
+
+const MODAL_SHOWN_KEY = 'modalAlreadyShown';
+
+// show modal on page load
+window.addEventListener('load', function () {
+    // check if modal already shown (dont want to show on every window resize)
+    const modalShown = sessionStorage.getItem(MODAL_SHOWN_KEY);
+
+    if (!modalShown) {
+        openModal();
+        // store modal session info
+        sessionStorage.setItem(MODAL_SHOWN_KEY, 'true');
+    }
+});
+
+// open modal
+function openModal() {
+    document.getElementById('modalOverlay').classList.add('active');
+    // reset scroll to top
+    document.getElementById('modalContent').scrollTop = 0;
+}
+
+// close modal
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+}
+
+// close modal if click outside
+document.getElementById('modalOverlay').addEventListener('click', function (e) {
+    if (e.target === this) {
+        closeModal();
+    }
 });
 
 
@@ -4956,3 +5006,5 @@ map.on('popupopen', function (e) {
         }
     });
 });
+
+window.onresize = function () { location.reload(); }
