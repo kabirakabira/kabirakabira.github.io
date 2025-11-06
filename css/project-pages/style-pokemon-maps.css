@@ -2,7 +2,6 @@ body {
     overflow-x: hidden;
 }
 
-
 .map-container {
     width: 100vw;
     margin: auto;
@@ -10,8 +9,8 @@ body {
 }
 
 #map {
-    height: 800px;
-    width: 1200px;
+    height: 50vw;
+    width: 75vw;
     margin: 0 auto;
 }
 

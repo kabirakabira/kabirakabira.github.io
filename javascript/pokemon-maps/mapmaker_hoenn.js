@@ -1,18 +1,27 @@
+// get vw and vh
+let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
 // image
-const imageUrl = "/resources/project-resources/pokemon-maps/hoenn/basemap.png";
+const imageUrl = "/resources/project-resources/pokemon-maps/hoenn/basemap_v2.png";
 
 // set bounds
-const imageBounds = [
-    [0, 0],
-    [800, 1200]
-];
-
 const imageHeight = 800;
 const imageWidth = 1200;
 
+const imageBounds = [
+    [0, 0],
+    [imageHeight, imageWidth]
+];
+
+
+
 // set up map 
 const map = L.map("map", {
-    crs: L.CRS.Simple
+    crs: L.CRS.Simple,
+    fullscreenControl: {
+        pseudoFullscreen: false // if true, fullscreen to page width and height
+    }
 });
 
 map.setMaxBounds(imageBounds);
@@ -2488,6 +2497,55 @@ var route134_polygon = L.polygon([[[0.39 * imageHeight, 0.3475 * imageWidth], [0
     }
 ).addTo(map).bindPopup(route134_popup, popupOptions);
 
+// Jagged Pass
+var jaggedPass_popup = L.popup().setContent(`
+        <div class="tabbed-popup">
+
+        <h3 style="margin: 0 0 10px 0;"> jagged pass </h3>
+
+            <div class="popup-tabs">
+                <button class="popup-tab active" data-tab="1">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/key-item/journal.png?raw=true" alt="Description"> </a>    
+                </button>
+                <button class="popup-tab" data-tab="2">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/ball/poke.png?raw=true" alt="Encounters"> </a>
+                </button>
+            </div>
+
+            <div class="popup-content active" data-content="1">
+                The Jagged Pass is a steep mountainside path leading down from the summit of Mt. Chimney to Lavaridge Town. 
+            </div>
+
+            <div class="popup-content" data-content="2">
+                <table class = "popup-table">
+                    <tr>
+                        <th> Pokemon </th>
+                        <th> Method </th>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/numel.png" alt=""> numel </td>
+                        <td> surf, old rod, good rod </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/machop.png" alt=""> machop </td>
+                        <td> surf </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/spoink.png" alt=""> spoink </td>
+                        <td> surf </td>
+                    </tr>
+                </table>
+            </div>
+
+    </div>
+`);
+
+var jaggedPass_polygon = L.polygon([[[0.83125* imageHeight, 0.230833333333333* imageWidth], [0.79875* imageHeight, 0.230833333333333* imageWidth], [0.79875* imageHeight, 0.2475* imageWidth], [0.83125* imageHeight, 0.2475* imageWidth],[0.83125* imageHeight, 0.230833333333333* imageWidth]]],
+    {
+        color: 'red'
+    }
+).addTo(map).bindPopup(jaggedPass_popup, popupOptions);
+
 // Littleroot Town
 var littlerootTown_popup = L.popup().setContent(`
         <div class="tabbed-popup">
@@ -3772,6 +3830,38 @@ var fieryPath_marker_2 = L.circle([0.8646875* imageHeight, 0.279033203* imageWid
     }
 ).addTo(map).bindPopup(fieryPath_popup, popupOptions)
 
+// Mt. Chimney
+var mtChimney_popup = L.popup().setContent(`
+        <div class="tabbed-popup">
+
+        <h3 style="margin: 0 0 10px 0;"> mt chimney </h3>
+
+            <div class="popup-tabs">
+                <button class="popup-tab active" data-tab="1">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/key-item/journal.png?raw=true" alt="Description"> </a>    
+                </button>
+                <button class="popup-tab" data-tab="2">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/ball/poke.png?raw=true" alt="Encounters"> </a>
+                </button>
+            </div>
+
+            <div class="popup-content active" data-content="1">
+                Mt. Chimney is a large volcano in the Hoenn region. The peak is accessible via cable car from Route 112, and from there a path south leads down Jagged Pass.
+            </div>
+
+            <div class="popup-content" data-content="2">
+                There are no available encounters here.
+            </div>
+
+    </div>
+`);
+
+var mtChimney_marker = L.circle([0.866555992484589* imageHeight, 0.242811050415038* imageWidth], Math.sqrt((0.00196349538 * (imageHeight * imageWidth)) / Math.PI),
+    {
+    color: 'red'
+    }
+).addTo(map).bindPopup(mtChimney_popup, popupOptions)
+
 // Meteor Falls
 var meteorFalls_popup = L.popup().setContent(`
         <div class="tabbed-popup">
@@ -3847,17 +3937,998 @@ var meteorFalls_marker_2 = L.circle([0.84140622* imageHeight, 0.13125* imageWidt
     }
 ).addTo(map).bindPopup(meteorFalls_popup, popupOptions)
 
-// Magma/Aqua Hideout
+// Mt. Pyre
+var mtPyre_popup = L.popup().setContent(`
+        <div class="tabbed-popup">
 
+        <h3 style="margin: 0 0 10px 0;"> mt pyre </h3>
+
+            <div class="popup-tabs">
+                <button class="popup-tab active" data-tab="1">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/key-item/journal.png?raw=true" alt="Description"> </a>    
+                </button>
+                <button class="popup-tab" data-tab="2">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/ball/poke.png?raw=true" alt="Encounters"> </a>
+                </button>
+            </div>
+
+            <div class="popup-content active" data-content="1">
+                Mt. Pyre is a large volcano in the Hoenn region. The peak is accessible via cable car from Route 112, and from there a path south leads down Jagged Pass.
+            </div>
+
+            <div class="popup-content" data-content="2">
+                <table class = "popup-table">
+                    <tr>
+                        <th> Pokemon </th>
+                        <th> Method </th>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/shuppet.png" alt=""> shuppet </td>
+                        <td> walk <br> all parts </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/duskull.png" alt=""> duskull </td>
+                        <td> walk <br> F4-6 <br> summit </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/vulpix.png" alt=""> vulpix </td>
+                        <td> grass <br> mountain wall </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/wingull.png" alt=""> wingull </td>
+                        <td> grass <br> mountain wall </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/chimecho.png" alt=""> chimecho </td>
+                        <td> grass <br> summit </td>
+                    </tr>
+                </table>
+            </div>
+
+    </div>
+`);
+
+var mtPyre_marker = L.circle([0.698430995893974* imageHeight, 0.608019383748372* imageWidth], Math.sqrt((0.00196349538 * (imageHeight * imageWidth)) / Math.PI),
+    {
+    color: 'red'
+    }
+).addTo(map).bindPopup(mtPyre_popup, popupOptions)
+
+// Safari Zone
+var safariZone_popup = L.popup().setContent(`
+        <div class="tabbed-popup">
+
+        <h3 style="margin: 0 0 10px 0;"> safari zone </h3>
+
+            <div class="popup-tabs">
+                <button class="popup-tab active" data-tab="1">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/key-item/journal.png?raw=true" alt="Description"> </a>    
+                </button>
+                <button class="popup-tab" data-tab="2">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/ball/poke.png?raw=true" alt="Encounters"> </a>
+                </button>
+            </div>
+
+            <div class="popup-content active" data-content="1">
+                The Hoenn Safari Zone is a special Pokémon preserve where Trainers can enter to catch wild Pokémon. The entrance is on Route 121.
+            </div>
+
+            <div class="popup-content" data-content="2">
+                <table class = "popup-table">
+                    <tr>
+                        <th> Pokemon </th>
+                        <th> Method </th>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/oddish.png" alt=""> oddish </td>
+                        <td> grass <br> all parts  </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/girafarig.png" alt=""> girafarig </td>
+                        <td>  grass <br> southwest </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/natu.png" alt=""> natu </td>
+                        <td> grass <br> southwest, northeast </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/doduo.png" alt=""> doduo </td>
+                        <td> grass <br> southwest, northwest </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/gloom.png" alt=""> gloom </td>
+                        <td> grass <br> all parts </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/wobbuffet.png" alt=""> wobbuffet </td>
+                        <td> grass <br> southwest </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/pikachu.png" alt=""> pikachu </td>
+                        <td> grass <br> southwest </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/phanpy.png" alt=""> phanpy </td>
+                        <td> grass <br> northeast </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/xatu.png" alt=""> xatu </td>
+                        <td> grass <br> northeast </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/heracross.png" alt=""> heracross </td>
+                        <td> grass <br> northeast </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/rhyhorn.png" alt=""> rhyhorn </td>
+                        <td> grass <br> northwest </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/dodrio.png" alt=""> dodrio </td>
+                        <td> grass <br> northwest </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/pinsir.png" alt=""> pinsir </td>
+                        <td> grass <br> northwest </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/psyduck.png" alt=""> psyduck </td>
+                        <td> surf <br> all parts </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/golduck.png" alt=""> golduck </td>
+                        <td> surf <br> northwest </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/magikarp.png" alt=""> magikarp </td>
+                        <td> old rod, good rod <br> all parts </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/goldeen.png" alt=""> goldeen </td>
+                        <td> old rod, good rod, super rod <br> all parts </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/seaking.png" alt=""> seaking </td>
+                        <td> super rod <br> all parts </td>
+                    </tr>
+                </table>
+            </div>
+
+    </div>
+`);
+
+var safariZone_marker = L.circle([0.811868493032951* imageHeight, 0.620238714218139* imageWidth], Math.sqrt((0.00196349538 * (imageHeight * imageWidth)) / Math.PI),
+    {
+    color: 'red'
+    }
+).addTo(map).bindPopup(safariZone_popup, popupOptions)
+
+// Magma/Aqua Hideout
+var aquaHideout_popup = L.popup().setContent(`
+        <div class="tabbed-popup">
+
+        <h3 style="margin: 0 0 10px 0;"> Aqua Hideout </h3>
+
+            <div class="popup-tabs">
+                <button class="popup-tab active" data-tab="1">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/key-item/journal.png?raw=true" alt="Description"> </a>    
+                </button>
+                <button class="popup-tab" data-tab="2">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/ball/poke.png?raw=true" alt="Encounters"> </a>
+                </button>
+            </div>
+
+            <div class="popup-content active" data-content="1">
+                This is Team Aqua's hideout near Lilycove City. The base is full of Aqua Grunts, and has warp panels to get around.
+            </div>
+
+            <div class="popup-content" data-content="2">
+                <table class = "popup-table">
+                    <tr>
+                        <th> Pokemon </th>
+                        <th> Method </th>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/electrode.png" alt=""> electrode </td>
+                        <td> Two static encounters disguised as items. </td>
+                    </tr>
+                </table>
+            </div>
+
+    </div>
+`);
+
+var aquaHideout_marker = L.circle([0.807539063* imageHeight, 0.730833333* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+    {
+    color: 'red'
+    }
+).addTo(map).bindPopup(aquaHideout_popup, popupOptions)
 
 // Shoal Cave
+var shoalCave_popup = L.popup().setContent(`
+        <div class="tabbed-popup">
 
+        <h3 style="margin: 0 0 10px 0;"> shoal cave </h3>
+
+            <div class="popup-tabs">
+                <button class="popup-tab active" data-tab="1">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/key-item/journal.png?raw=true" alt="Description"> </a>    
+                </button>
+                <button class="popup-tab" data-tab="2">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/ball/poke.png?raw=true" alt="Encounters"> </a>
+                </button>
+            </div>
+
+            <div class="popup-content active" data-content="1">
+                Shoal Cave is a cave north of Mossdeep City. This cave was carved into the side of a rocky mountain rising from the ocean. At predetermined times of the day, every six hours, the tides rise or fall.
+            </div>
+
+            <div class="popup-content" data-content="2">
+                <table class = "popup-table">
+                    <tr>
+                        <th> Pokemon </th>
+                        <th> Method </th>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/zubat.png" alt=""> zubat </td>
+                        <td> walk, surf </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/golbat.png" alt=""> golbat </td>
+                        <td> walk </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/spheal.png" alt=""> spheal </td>
+                        <td> walk </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/snorunt.png" alt=""> snorunt </td>
+                        <td> walk </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/magikarp.png" alt=""> magikarp </td>
+                        <td> old rod, good rod <br> BF2 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/tentacool.png" alt=""> tentacool </td>
+                        <td> old rod, good rod </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/wailmer.png" alt=""> wailmer </td>
+                        <td> old rod, good rod, super rod </td>
+                    </tr>  
+                </table>
+            </div>
+
+    </div>
+`);
+
+var shoalCave_marker = L.circle([0.84872422* imageHeight, 0.884199099* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+    {
+    color: 'red'
+    }
+).addTo(map).bindPopup(shoalCave_popup, popupOptions)
 
 // Sky Pillar
+var skyPillar_popup = L.popup().setContent(`
+        <div class="tabbed-popup">
 
+        <h3 style="margin: 0 0 10px 0;"> sky pillar </h3>
+
+            <div class="popup-tabs">
+                <button class="popup-tab active" data-tab="1">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/key-item/journal.png?raw=true" alt="Description"> </a>    
+                </button>
+                <button class="popup-tab" data-tab="2">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/ball/poke.png?raw=true" alt="Encounters"> </a>
+                </button>
+            </div>
+
+            <div class="popup-content active" data-content="1">
+                The Sky Pillar is a building in Hoenn. It is located on the northern edge of Route 131. Rayquaza appears at the top of the Sky Pillar.
+            </div>
+
+            <div class="popup-content" data-content="2">
+                <table class = "popup-table">
+                    <tr>
+                        <th> Pokemon </th>
+                        <th> Method </th>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/sableye.png" alt=""> sableye </td>
+                        <td> F1 <br> F3 <br> F5 </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/golbat.png" alt=""> golbat </td>
+                        <td> F1 <br> F3 <br> F5 </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/claydol.png" alt=""> claydol </td>
+                        <td> F1 <br> F3 <br> F5 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/banette.png" alt=""> banette </td>
+                        <td> F1 <br> F3 <br> F5 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/altaria.png" alt=""> altaria </td>
+                        <td> F5 </td>
+                    </tr>  
+                </table>
+            </div>
+
+    </div>
+`);
+
+var skyPillar_marker = L.circle([0.405312502* imageHeight, 0.748541666* imageWidth], Math.sqrt((0.00130899692 * (imageHeight * imageWidth)) / Math.PI),
+    {
+    color: 'red'
+    }
+).addTo(map).bindPopup(skyPillar_popup, popupOptions)
 
 // Victory Road
+var victoryRoad_popup = L.popup().setContent(`
+        <div class="tabbed-popup">
 
+        <h3 style="margin: 0 0 10px 0;"> victory road </h3>
+
+            <div class="popup-tabs">
+                <button class="popup-tab active" data-tab="1">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/key-item/journal.png?raw=true" alt="Description"> </a>    
+                </button>
+                <button class="popup-tab" data-tab="2">
+                    <a> <img class = "popup-tab-img" src="https://github.com/msikma/pokesprite/blob/master/items/ball/poke.png?raw=true" alt="Encounters"> </a>
+                </button>
+            </div>
+
+            <div class="popup-content active" data-content="1">
+                Hoenn's Victory Road is the route that takes Pokémon League-bound Trainers to the Elite Four.
+            </div>
+
+            <div class="popup-content" data-content="2">
+                <table class = "popup-table">
+                    <tr>
+                        <th> Pokemon </th>
+                        <th> Method </th>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/golbat.png" alt=""> golbat </td>
+                        <td> walk, surf <br> F1 BF1 BF2 </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/hariyama.png" alt=""> hariyama </td>
+                        <td> walk <br> F1 BF1 </td>
+                    </tr>
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/lairon.png" alt=""> lairon </td>
+                        <td> walk <br> F1 BF1 BF2 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/loudred.png" alt=""> loudred </td>
+                        <td> walk <br> F1 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/zubat.png" alt=""> zubat </td>
+                        <td> walk <br> F1 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/makuhita.png" alt=""> makuhita </td>
+                        <td> walk <br> F1 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/aron.png" alt=""> aron </td>
+                        <td> walk <br> F1 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/whismur.png" alt=""> whismur </td>
+                        <td> walk <br> F1 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/mawile.png" alt=""> mawile </td>
+                        <td> walk <br> BF1 BF2 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/sableye.png" alt=""> sableye </td>
+                        <td> walk <br> BF2 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/magikarp.png" alt=""> magikarp </td>
+                        <td> old rod, good rod <br> BF2 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/goldeen.png" alt=""> goldeen </td>
+                        <td> old rod, good rod <br> BF2 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/barboach.png" alt=""> barboach </td>
+                        <td> good rod, super rod <br> BF2 </td>
+                    </tr>  
+                    <tr>
+                        <td> <img class="table-img" src="https://img.pokemondb.net/sprites/ruby-sapphire/normal/whiscash.png" alt=""> whiscash </td>
+                        <td> super rod <br> BF2 </td>
+                    </tr>  
+                </table>
+            </div>
+
+    </div>
+`);
+
+var victoryRoad_marker = L.circle([0.555* imageHeight, 0.938958333* imageWidth], Math.sqrt((0.00032724923 * (imageHeight * imageWidth)) / Math.PI),
+    {
+    color: 'red'
+    }
+).addTo(map).bindPopup(victoryRoad_popup, popupOptions)
+
+///// Adding Pokemon sprites to map
+/// Static pokemon regardless of time
+// Treecko, Torchic, Mudkip
+if (Math.random() < 0.05) {
+    treeckoImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/treecko.gif";
+} else {
+    treeckoImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/treecko.gif";
+}
+L.imageOverlay(treeckoImg, [[0.28937 * imageHeight, 0.17333* imageWidth], [(0.28937 * imageHeight) + 22.38608, (0.17333* imageWidth) + 15.63472]]).addTo(map);
+
+if (Math.random() < 0.05) {
+    torchicImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/torchic.gif";
+} else {
+    torchicImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/torchic.gif";
+}
+L.imageOverlay(torchicImg, [[0.24968 * imageHeight, 0.18848* imageWidth], [(0.24968 * imageHeight) + 21.76073, (0.18848* imageWidth) + 16.08402]]).addTo(map);
+
+if (Math.random() < 0.05) {
+    mudkipImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/mudkip.gif";
+} else {
+    mudkipImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/mudkip.gif";
+}
+L.imageOverlay(mudkipImg, [[0.28468 * imageHeight, 0.21369* imageWidth], [(0.28468 * imageHeight) + 19.74266, (0.21369* imageWidth) + 17.7281]]).addTo(map);
+
+// Rayquaza
+if (Math.random() < 0.05) {
+    rayquazaImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/rayquaza.gif";
+} else {
+    rayquazaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/rayquaza.gif";
+}
+L.imageOverlay(rayquazaImg, [[0.425 * imageHeight, 0.735* imageWidth], [(0.425 * imageHeight) + 29.69542, (0.735* imageWidth) + 33.67522]]).addTo(map);
+
+// Latias and Latios
+if (Math.random() < 0.05) {
+    latiosImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/latios.gif";
+} else {
+    latiosImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/latios.gif";
+}
+L.imageOverlay(latiosImg, [[0.13812 * imageHeight, 0.42307* imageWidth], [(0.13812 * imageHeight) + 23.03316, (0.42307* imageWidth) + 26.04941]]).addTo(map);
+
+if (Math.random() < 0.05) {
+    latiasImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/latias.gif";
+} else {
+    latiasImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/latias.gif";
+}
+L.imageOverlay(latiasImg, [[0.1125 * imageHeight, 0.475* imageWidth], [(0.1125 * imageHeight) + 20.47816, (0.475* imageWidth) + 29.29952]]).addTo(map);
+
+/// Other Pokemon with custom probability
+// Wingull_1
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/wingull.gif";
+    } else {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
+    }
+    L.imageOverlay(wingullImg, [[0.33437 * imageHeight, 0.07135* imageWidth], [(0.33437 * imageHeight) + 15.68738, (0.07135* imageWidth) + 22.31094]]).addTo(map);
+}
+
+
+// Wingull_2
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/wingull.gif";
+    } else {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
+    }
+    L.imageOverlay(wingullImg, [[0.2739 * imageHeight, 0.33166* imageWidth], [(0.2739 * imageHeight) + 15.68738, (0.33166* imageWidth) + 22.31094]]).addTo(map);
+}
+
+// Wingull_3
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/wingull.gif";
+    } else {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
+    }
+    L.imageOverlay(wingullImg, [[0.71624 * imageHeight, 0.72416* imageWidth], [(0.71624 * imageHeight) + 15.68738, (0.72416* imageWidth) + 22.31094]]).addTo(map);
+}
+
+// Wingull_4
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/wingull.gif";
+    } else {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
+    }
+    L.imageOverlay(wingullImg, [[0.40281 * imageHeight, 0.62832* imageWidth], [(0.40281 * imageHeight) + 15.68738, (0.62832* imageWidth) + 22.31094]]).addTo(map);
+
+}
+
+// Wingull_5
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/wingull.gif";
+    } else {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
+    }
+}
+L.imageOverlay(wingullImg, [[0.47624 * imageHeight, 0.87332* imageWidth], [(0.47624 * imageHeight) + 15.68738, (0.87332* imageWidth) + 22.31094]]).addTo(map);
+
+// Wingull_6
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/wingull.gif";
+    } else {
+        wingullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wingull.gif";
+    }
+}
+L.imageOverlay(wingullImg, [[0.70187 * imageHeight, 0.06791* imageWidth], [(0.70187 * imageHeight) + 15.68738, (0.06791* imageWidth) + 22.31094]]).addTo(map);
+
+// Duskull
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        duskullImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/duskull.gif";
+    } else {
+        duskullImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/duskull.gif";
+    }
+    L.imageOverlay(duskullImg, [[0.66968 * imageHeight, 0.57478* imageWidth], [(0.66968 * imageHeight) + 17.57338, (0.57478* imageWidth) + 19.9165]]).addTo(map);
+}
+
+// Shuppet
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        shuppetImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/shuppet.gif";
+    } else {
+        shuppetImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/shuppet.gif";
+    }
+    L.imageOverlay(shuppetImg, [[0.70562 * imageHeight, 0.62082* imageWidth], [(0.70562 * imageHeight) + 22.81475, (0.62082* imageWidth) + 15.34095]]).addTo(map);
+}
+
+// Torkoal
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        torkoalImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/torkoal.gif";
+    } else {
+        torkoalImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/torkoal.gif";
+    }
+    L.imageOverlay(torkoalImg, [[0.82781 * imageHeight, 0.20833* imageWidth], [(0.82781 * imageHeight) + 22.5347, (0.20833* imageWidth) + 22.18801]]).addTo(map);
+}
+
+// Meditite
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        medititeImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/meditite.gif";
+    } else {
+        medititeImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/meditite.gif";
+    }
+    L.imageOverlay(medititeImg, [[0.82499 * imageHeight, 0.1625* imageWidth], [(0.82499 * imageHeight) + 20.72548, (0.1625* imageWidth) + 16.88743]]).addTo(map);
+}
+
+
+// Carvanha_1
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        carvanhaImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/carvanha.gif";
+    } else {
+        carvanhaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/carvanha.gif";
+    }
+    L.imageOverlay(carvanhaImg, [[0.45 * imageHeight, 0.22333* imageWidth], [(0.45 * imageHeight) + 13.64576, (0.22333* imageWidth) + 14.65656]]).addTo(map);
+}
+
+// Carvanha_2
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        carvanhaImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/carvanha.gif";
+    } else {
+        carvanhaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/carvanha.gif";
+    }
+    L.imageOverlay(carvanhaImg, [[0.5775 * imageHeight, 0.36499* imageWidth], [(0.5775 * imageHeight) + 13.64576, (0.36499* imageWidth) + 14.65656]]).addTo(map);
+}
+
+// Sharpedo
+if (Math.random() < 0.50) {
+    if (Math.random() < 0.05) {
+        sharpedoImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/sharpedo.gif";
+    } else {
+        sharpedoImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/sharpedo.gif";
+    }
+    L.imageOverlay(sharpedoImg, [[0.30936 * imageHeight, 0.83373* imageWidth], [(0.30936 * imageHeight) + 24.4949, (0.83373* imageWidth) + 24.4949]]).addTo(map);
+}
+
+// Cacnea
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        cacneaImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/cacnea.gif";
+    } else {
+        cacneaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/cacnea.gif";
+    }
+    L.imageOverlay(cacneaImg, [[0.83367 * imageHeight, 0.33291* imageWidth], [(0.83367 * imageHeight) + 11.78911, (0.33291* imageWidth) + 16.96482]]).addTo(map);
+}
+
+// Trapinch
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        trapinchImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/trapinch.gif";
+    } else {
+        trapinchImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/trapinch.gif";
+    }
+    L.imageOverlay(trapinchImg, [[0.78086 * imageHeight, 0.34541* imageWidth], [(0.78086 * imageHeight) + 14.49138, (0.34541* imageWidth) + 13.80131]]).addTo(map);
+}
+
+// Absol
+if (Math.random() < 0.25) {
+    if (Math.random() < 0.05) {
+        absolImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/absol.gif";
+    } else {
+        absolImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/absol.gif";
+    }
+    L.imageOverlay(absolImg, [[0.82055 * imageHeight, 0.46332* imageWidth], [(0.82055 * imageHeight) + 20.8843, (0.46332* imageWidth) + 21.54729]]).addTo(map);
+}
+
+// Oddish
+if (Math.random() < 1) {
+    if (Math.random() < 0.05) {
+        oddishImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/oddish.gif";
+    } else {
+        oddishImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/oddish.gif";
+    }
+    L.imageOverlay(oddishImg, [[0.8286 * imageHeight, 0.53331* imageWidth], [(0.8286 * imageHeight) + 16.22214, (0.53331* imageWidth) + 12.32883]]).addTo(map);
+}
+
+// Mightyena
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        mightyenaImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/mightyena.gif";
+    } else {
+        mightyenaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/mightyena.gif";
+    }
+    L.imageOverlay(mightyenaImg, [[0.73985 * imageHeight, 0.51748* imageWidth], [(0.73985 * imageHeight) + 19.86254, (0.51748* imageWidth) + 22.65571]]).addTo(map);
+}
+
+// Linoone
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        linooneImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/linoone.gif";
+    } else {
+        linooneImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/linoone.gif";
+    }
+    L.imageOverlay(linooneImg, [[0.66774 * imageHeight, 0.43103* imageWidth], [(0.66774 * imageHeight) + 14.22916, (0.43103* imageWidth) + 28.11127]]).addTo(map);
+}
+
+// Tropius
+if (Math.random() < 0.50) {
+    if (Math.random() < 0.05) {
+        tropiusImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/tropius.gif";
+    } else {
+        tropiusImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/tropius.gif";
+    }
+    L.imageOverlay(tropiusImg, [[0.89805 * imageHeight, 0.38124* imageWidth], [(0.89805 * imageHeight) + 26.09312, (0.38124* imageWidth) + 30.65942]]).addTo(map);
+}
+
+// Skarmory
+if (Math.random() < 0.40) {
+    if (Math.random() < 0.05) {
+        skarmoryImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/skarmory.gif";
+    } else {
+        skarmoryImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/skarmory.gif";
+    }
+    L.imageOverlay(skarmoryImg, [[0.92149 * imageHeight, 0.26395* imageWidth], [(0.92149 * imageHeight) + 28.28427, (0.26395* imageWidth) + 28.28427]]).addTo(map);
+}
+
+// Barboach
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        barboachImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/barboach.gif";
+    } else {
+        barboachImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/barboach.gif";
+    }
+    L.imageOverlay(barboachImg, [[0.88555 * imageHeight, 0.13082* imageWidth], [(0.88555 * imageHeight) + 12.07615, (0.13082* imageWidth) + 16.56158]]).addTo(map);
+}
+
+// Lombre
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        lombreImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/lombre.gif";
+    } else {
+        lombreImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/lombre.gif";
+    }
+    L.imageOverlay(lombreImg, [[0.91555 * imageHeight, 0.13603* imageWidth], [(0.91555 * imageHeight) + 20.39608, (0.13603* imageWidth) + 19.61162]]).addTo(map);
+}
+
+// Wurmple
+if (Math.random() < 0.99) {
+    if (Math.random() < 0.05) {
+        wurmpleImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/wurmple.gif";
+    } else {
+        wurmpleImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/wurmple.gif";
+    }
+    L.imageOverlay(wurmpleImg, [[0.40652 * imageHeight, 0.08593* imageWidth], [(0.40652 * imageHeight) + 13.47512, (0.08593* imageWidth) + 11.13162]]).addTo(map);
+}
+
+// Slakoth
+if (Math.random() < 0.50) {
+    if (Math.random() < 0.05) {
+        slakothImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/slakoth.gif";
+    } else {
+        slakothImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/slakoth.gif";
+    }
+    L.imageOverlay(slakothImg, [[0.43574 * imageHeight, 0.10833* imageWidth], [(0.43574 * imageHeight) + 13.37334, (0.10833* imageWidth) + 22.4327]]).addTo(map);
+}
+
+// Swellow
+if (Math.random() < 42069) {
+    if (Math.random() < 0.05) {
+        swellowImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/swellow.gif";
+    } else {
+        swellowImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/swellow.gif";
+    }
+    L.imageOverlay(swellowImg, [[0.52985 * imageHeight, 0.17539* imageWidth], [(0.52985 * imageHeight) + 17.9802, (0.17539* imageWidth) + 22.24669]]).addTo(map);
+}
+
+// Numel
+if (Math.random() < 0.50) {
+    if (Math.random() < 0.05) {
+        numelImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/numel.gif";
+    } else {
+        numelImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/numel.gif";
+    }
+    L.imageOverlay(numelImg, [[0.82302 * imageHeight, 0.285* imageWidth], [(0.82302 * imageHeight) + 15.81139, (0.285* imageWidth) + 15.81139]]).addTo(map);
+}
+
+// Marill
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        marillImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/marill.gif";
+    } else {
+        marillImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/marill.gif";
+    }
+    L.imageOverlay(marillImg, [[0.68427 * imageHeight, 0.29375* imageWidth], [(0.68427 * imageHeight) + 11.86342, (0.29375* imageWidth) + 16.85854]]).addTo(map);
+}
+
+// Volbeat
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        volbeatImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/volbeat.gif";
+    } else {
+        volbeatImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/volbeat.gif";
+    }
+    L.imageOverlay(volbeatImg, [[0.63375 * imageHeight, 0.23254* imageWidth], [(0.63375 * imageHeight) + 13.11011, (0.23254* imageWidth) + 15.2554]]).addTo(map);
+}
+
+// Illumise
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        illumiseImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/illumise.gif";
+    } else {
+        illumiseImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/illumise.gif";
+    }
+    L.imageOverlay(illumiseImg, [[0.59688 * imageHeight, 0.26046* imageWidth], [(0.59688 * imageHeight) + 13.87777, (0.26046* imageWidth) + 14.41153]]).addTo(map);
+}
+
+// Geodude
+if (Math.random() < 0.90) {
+    if (Math.random() < 0.05) {
+        geodudeImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/geodude.gif";
+    } else {
+        geodudeImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/geodude.gif";
+    }
+    L.imageOverlay(geodudeImg, [[0.70594 * imageHeight, 0.339* imageWidth], [(0.70594 * imageHeight) + 13.58036, (0.339* imageWidth) + 18.40893]]).addTo(map);
+}
+
+// Feebas
+if (Math.random() < 0.10) {
+    if (Math.random() < 0.05) {
+        feebasImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/feebas.gif";
+    } else {
+        feebasImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/feebas.gif";
+    }
+    L.imageOverlay(feebasImg, [[0.77328 * imageHeight, 0.41221* imageWidth], [(0.77328 * imageHeight) + 16.5434, (0.41221* imageWidth) + 12.08941]]).addTo(map);
+}
+
+// Kecleon
+if (Math.random() < 0.50) {
+    if (Math.random() < 0.05) {
+        kecleonImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/kecleon.gif";
+    } else {
+        kecleonImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/kecleon.gif";
+    }
+    L.imageOverlay(kecleonImg, [[0.70375 * imageHeight, 0.37212* imageWidth], [(0.70375 * imageHeight) + 18.39732, (0.37212* imageWidth) + 21.74229]]).addTo(map);
+}
+
+// Electrike
+if (Math.random() < 0.90) {
+    if (Math.random() < 0.05) {
+        electrikeImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/electrike.gif";
+    } else {
+        electrikeImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/electrike.gif";
+    }
+    L.imageOverlay(electrikeImg, [[0.58125 * imageHeight, 0.42587* imageWidth], [(0.58125 * imageHeight) + 13.41641, (0.42587* imageWidth) + 18.6339]]).addTo(map);
+}
+
+// Taillow
+if (Math.random() < 0.90) {
+    if (Math.random() < 0.05) {
+        taillowImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/taillow.gif";
+    } else {
+        taillowImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/taillow.gif";
+    }
+    L.imageOverlay(taillowImg, [[0.59813 * imageHeight, 0.11008* imageWidth], [(0.59813 * imageHeight) + 12.79204, (0.11008* imageWidth) + 15.63472]]).addTo(map);
+}
+
+// Ralts
+if (Math.random() < 0.40) {
+    if (Math.random() < 0.05) {
+        raltsImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/ralts.gif";
+    } else {
+        raltsImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/ralts.gif";
+    }
+    L.imageOverlay(raltsImg, [[0.38281 * imageHeight, 0.14212* imageWidth], [(0.38281 * imageHeight) + 17.22612, (0.14212* imageWidth) + 10.15899]]).addTo(map);
+}
+
+// Seedot
+if (Math.random() < 0.80) {
+    if (Math.random() < 0.05) {
+        seedotImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/seedot.gif";
+    } else {
+        seedotImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/seedot.gif";
+    }
+    L.imageOverlay(seedotImg, [[0.3875 * imageHeight, 0.16546* imageWidth], [(0.3875 * imageHeight) + 14.73577, (0.16546* imageWidth) + 13.57242]]).addTo(map);
+}
+
+// Zigzagoon
+if (Math.random() < 0.80) {
+    if (Math.random() < 0.05) {
+        zigzagoonImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/zigzagoon.gif";
+    } else {
+        zigzagoonImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/zigzagoon.gif";
+    }
+    L.imageOverlay(zigzagoonImg, [[0.44969 * imageHeight, 0.18483* imageWidth], [(0.44969 * imageHeight) + 12.03443, (0.18483* imageWidth) + 16.61897]]).addTo(map);
+}
+
+// Poochyena
+if (Math.random() < 0.80) {
+    if (Math.random() < 0.05) {
+        poochyenaImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/poochyena.gif";
+    } else {
+        poochyenaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/poochyena.gif";
+    }
+    L.imageOverlay(poochyenaImg, [[0.43219 * imageHeight, 0.20566* imageWidth], [(0.43219 * imageHeight) + 13.00887, (0.20566* imageWidth) + 15.37412]]).addTo(map);
+}
+
+// Hariyama
+if (Math.random() < 0.50) {
+    if (Math.random() < 0.05) {
+        hariyamaImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/hariyama.gif";
+    } else {
+        hariyamaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/hariyama.gif";
+    }
+    L.imageOverlay(hariyamaImg, [[0.1125 * imageHeight, 0.08421* imageWidth], [(0.1125 * imageHeight) + 26.79891, (0.08421* imageWidth) + 29.85195]]).addTo(map);
+}
+
+// Nosepass
+if (Math.random() < 0.30) {
+    if (Math.random() < 0.05) {
+        nosepassImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/nosepass.gif";
+    } else {
+        nosepassImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/nosepass.gif";
+    }
+    L.imageOverlay(nosepassImg, [[0.06625 * imageHeight, 0.05924* imageWidth], [(0.06625 * imageHeight) + 20.93072, (0.05924* imageWidth) + 19.11066]]).addTo(map);
+}
+
+// Corsola
+if (Math.random() < 0.50) {
+    if (Math.random() < 0.05) {
+        corsolaImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/corsola.gif";
+    } else {
+        corsolaImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/corsola.gif";
+    }
+    L.imageOverlay(corsolaImg, [[0.41781 * imageHeight, 0.91171* imageWidth], [(0.41781 * imageHeight) + 14.54436, (0.91171* imageWidth) + 17.18879]]).addTo(map);
+}
+
+// Sealeo
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        sealeoImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/sealeo.gif";
+    } else {
+        sealeoImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/sealeo.gif";
+    }
+    L.imageOverlay(sealeoImg, [[0.79375 * imageHeight, 0.794* imageWidth], [(0.79375 * imageHeight) + 20.9477, (0.794* imageWidth) + 28.64277]]).addTo(map);
+}
+
+// Beldum
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        beldumImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/beldum.gif";
+    } else {
+        beldumImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/beldum.gif";
+    }
+    L.imageOverlay(beldumImg, [[0.725 * imageHeight, 0.89608* imageWidth], [(0.725 * imageHeight) + 16.95582, (0.89608* imageWidth) + 17.69303]]).addTo(map);
+}
+
+// Clamperl
+if (Math.random() < 0.90) {
+    if (Math.random() < 0.05) {
+        clamperlImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/clamperl.gif";
+    } else {
+        clamperlImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/clamperl.gif";
+    }
+    L.imageOverlay(clamperlImg, [[0.59125 * imageHeight, 0.78341* imageWidth], [(0.59125 * imageHeight) + 16.7332, (0.78341* imageWidth) + 17.92843]]).addTo(map);
+}
+
+// Relicanth
+if (Math.random() < 0.25) {
+    if (Math.random() < 0.05) {
+        relicanthImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/relicanth.gif";
+    } else {
+        relicanthImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/relicanth.gif";
+    }
+    L.imageOverlay(relicanthImg, [[0.49875 * imageHeight, 0.75299* imageWidth], [(0.49875 * imageHeight) + 22.77376, (0.75299* imageWidth) + 26.34611]]).addTo(map);
+}
+
+// Chinchou
+if (Math.random() < 0.80) {
+    if (Math.random() < 0.05) {
+        chinchouImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/chinchou.gif";
+    } else {
+        chinchouImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/chinchou.gif";
+    }
+    L.imageOverlay(chinchouImg, [[0.57438 * imageHeight, 0.71924* imageWidth], [(0.57438 * imageHeight) + 15.52125, (0.71924* imageWidth) + 19.32835]]).addTo(map);
+}
+
+// Luvdisc
+if (Math.random() < 0.75) {
+    if (Math.random() < 0.05) {
+        luvdiscImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/luvdisc.gif";
+    } else {
+        luvdiscImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/luvdisc.gif";
+    }
+    L.imageOverlay(luvdiscImg, [[0.53938 * imageHeight, 0.83383* imageWidth], [(0.53938 * imageHeight) + 19.23538, (0.83383* imageWidth) + 15.59625]]).addTo(map);
+}
+
+// Pelipper
+if (Math.random() < 0.90) {
+    if (Math.random() < 0.05) {
+        pelipperImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/pelipper.gif";
+    } else {
+        pelipperImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/pelipper.gif";
+    }
+    L.imageOverlay(pelipperImg, [[0.34125 * imageHeight, 0.48174* imageWidth], [(0.34125 * imageHeight) + 21.79449, (0.48174* imageWidth) + 27.52988]]).addTo(map);
+}
+
+// Tentacool_1
+if (Math.random() < 0.99) {
+    if (Math.random() < 0.05) {
+        tentacoolImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/tentacool.gif";
+    } else {
+        tentacoolImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/tentacool.gif";
+    }
+    L.imageOverlay(tentacoolImg, [[0.29 * imageHeight, 0.51266* imageWidth], [(0.29 * imageHeight) + 20.35109, (0.51266* imageWidth) + 17.1981]]).addTo(map);
+}
+
+// Tentacool_2
+if (Math.random() < 0.99) {
+    if (Math.random() < 0.05) {
+        tentacoolImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/tentacool.gif";
+    } else {
+        tentacoolImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/tentacool.gif";
+    }
+    L.imageOverlay(tentacoolImg, [[0.4925 * imageHeight, 0.63849* imageWidth], [(0.4925 * imageHeight) + 20.35109, (0.63849* imageWidth) + 17.1981]]).addTo(map);
+}
+
+// Tentacruel
+if (Math.random() < 0.60) {
+    if (Math.random() < 0.05) {
+        tentacruelImg = "https://img.pokemondb.net/sprites/black-white/anim/shiny/tentacruel.gif";
+    } else {
+        tentacruelImg = "https://img.pokemondb.net/sprites/black-white/anim/normal/tentacruel.gif";
+    }
+    L.imageOverlay(tentacruelImg, [[0.21375 * imageHeight, 0.76099* imageWidth], [(0.21375 * imageHeight) + 28.28427, (0.76099* imageWidth) + 28.28427]]).addTo(map);
+}
 
 // FUNCTIONALITY
 map.on('click', function (e) {
