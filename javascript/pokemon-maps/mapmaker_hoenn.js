@@ -5007,4 +5007,20 @@ map.on('popupopen', function (e) {
     });
 });
 
-window.onresize = function () { location.reload(); }
+let initialWidth = window.innerWidth;
+let initialHeight = window.innerHeight;
+const threshold = 100; // pixels
+let resizeTimer;
+
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  
+  resizeTimer = setTimeout(() => {
+    const widthDiff = Math.abs(window.innerWidth - initialWidth);
+    const heightDiff = Math.abs(window.innerHeight - initialHeight);
+    
+    if (widthDiff > threshold || heightDiff > threshold) {
+      location.reload();
+    }
+  }, 500); // wait 500ms after resize stops
+});
