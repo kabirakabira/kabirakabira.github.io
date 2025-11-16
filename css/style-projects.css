@@ -1,111 +1,192 @@
 @media only screen and (min-width: 800px) {
 
-    .card {
-        width: 75vw;
-        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='10' stroke-dasharray='2%2c 6' stroke-dashoffset='24' stroke-linecap='butt'/%3e%3c/svg%3e");
-        justify-content: center;
-        text-align: center;
-        margin: auto;
-    }
+  .card {
+    width: 75vw;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='10' stroke-dasharray='2%2c 6' stroke-dashoffset='24' stroke-linecap='butt'/%3e%3c/svg%3e");
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+  }
 
-    .text-container{
-        padding-top: 5px;
-        padding-bottom: 25px;
-        text-align: center;
-        justify-content: center;
-        width: 50vw;
-        margin: auto;
-    }
+  .filter-container {
+    text-align: center;
+    margin: 30px auto;
+    width: 75vw;
+  }
 
-    .card-title {
-        font-family: "Futura";
-        font-weight: 700;
-        font-size: 30px;
-        color: var(--eerieblack);
-    }
+  .filter-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    font-family: "CourierPrime", monospace;
+    font-size: 14px;
+    background-color: #fbf4ea;
+    border: 2px solid #333;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 
-    .card-date {
-        margin-top: -20px;
-        font-family: "CourierPrime";
-        font-size: 10px;
-    }
+  .filter-btn:hover {
+    background-color: #e0e0e0;
+  }
 
-    .card-desc {
-        font-family: "CourierPrime";
-        font-size: 15px;
-        padding-bottom: 20px;
-        color: var(--eerieblack);
-    }
+  .filter-btn.active {
+    background-color: var(--eerieblack);
+    color: ivory;
+    border-style: solid;
+  }
 
-    .card-button,
-    .card-button:link,
-    .card-button:visited {
-        width: max-content;
-        padding: 8px 10px;
-        margin: auto;
-        background-color: var(--burntorange);
-        font-family: "CourierPrime";
-        color: ivory;
-        text-decoration: none;
-    }
+  .filter-btn.show-all.active {
+    background-color: var(--burntorange);
+    color: ivory;
+  }
 
-    .card-button:hover {
-        color: var(--eerieblack);
-        border: 2px dashed;
-        transition: 0.5s;
-    }
+  .card.hidden {
+    display: none;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .text-container {
+    padding-top: 5px;
+    padding-bottom: 25px;
+    text-align: center;
+    justify-content: center;
+    width: 50vw;
+    margin: auto;
+  }
+
+  .card-title {
+    font-family: "Futura";
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--eerieblack);
+  }
+
+  .card-date {
+    margin-top: -20px;
+    font-family: "CourierPrime";
+    font-size: 10px;
+  }
+
+  .card-desc {
+    font-family: "CourierPrime";
+    font-size: 15px;
+    padding-bottom: 20px;
+    color: var(--eerieblack);
+  }
+
+  .card-button,
+  .card-button:link,
+  .card-button:visited {
+    width: max-content;
+    padding: 8px 10px;
+    margin: auto;
+    background-color: var(--burntorange);
+    font-family: "CourierPrime";
+    color: ivory;
+    text-decoration: none;
+  }
+
+  .card-button:hover {
+    color: var(--eerieblack);
+    transition: 0.2s;
+  }
 
 }
 
 @media only screen and (max-width: 799px) {
 
-    .card {
-        width: 90vw;
-        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='10' stroke-dasharray='2%2c 6' stroke-dashoffset='24' stroke-linecap='butt'/%3e%3c/svg%3e");
-        justify-content: center;
-        text-align: center;
-        margin: auto;
-    }
+  .card {
+    width: 90vw;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='10' stroke-dasharray='2%2c 6' stroke-dashoffset='24' stroke-linecap='butt'/%3e%3c/svg%3e");
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+  }
 
-    .text-container{
-        padding-top: 5px;
-        padding-bottom: 25px;
-        text-align: center;
-        justify-content: center;
-        width: 75vw;
-        margin: auto;
-    }
+  .filter-container {
+    text-align: center;
+    margin: 30px auto;
+    width: 75vw;
+  }
 
-    .card-title {
-        font-family: "Futura";
-        font-weight: 700;
-        font-size: 30px;
-        color: var(--eerieblack);
-    }
+  .filter-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    font-family: "CourierPrime", monospace;
+    font-size: 14px;
+    background-color: #fbf4ea;
+    border: 2px solid #333;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 
-    .card-date {
-        margin-top: -20px;
-        font-family: "CourierPrime";
-        font-size: 10px;
-    }
+  .filter-btn:hover {
+    background-color: #e0e0e0;
+  }
 
-    .card-desc {
-        font-family: "CourierPrime";
-        font-size: 15px;
-        padding-bottom: 20px;
-        color: var(--eerieblack);
-    }
+  .filter-btn.active {
+    background-color: var(--eerieblack);
+    color: ivory;
+    border-style: solid;
+  }
 
-    .card-button,
-    .card-button:link,
-    .card-button:visited {
-        width: max-content;
-        padding: 8px 10px;
-        margin: auto;
-        background-color: var(--burntorange);
-        font-family: "CourierPrime";
-        color: ivory;
-        text-decoration: none;
-    }
+  .filter-btn.show-all.active {
+    background-color: var(--burntorange);
+    color: ivory;
+  }
+
+  .card.hidden {
+    display: none;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .text-container {
+    padding-top: 5px;
+    padding-bottom: 25px;
+    text-align: center;
+    justify-content: center;
+    width: 75vw;
+    margin: auto;
+  }
+
+  .card-title {
+    font-family: "Futura";
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--eerieblack);
+  }
+
+  .card-date {
+    margin-top: -20px;
+    font-family: "CourierPrime";
+    font-size: 10px;
+  }
+
+  .card-desc {
+    font-family: "CourierPrime";
+    font-size: 15px;
+    padding-bottom: 20px;
+    color: var(--eerieblack);
+  }
+
+  .card-button,
+  .card-button:link,
+  .card-button:visited {
+    width: max-content;
+    padding: 8px 10px;
+    margin: auto;
+    background-color: var(--burntorange);
+    font-family: "CourierPrime";
+    color: ivory;
+    text-decoration: none;
+  }
 
 }

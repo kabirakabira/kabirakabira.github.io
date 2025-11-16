@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/permanent-assets.css">
+    <script src="https://kit.fontawesome.com/3ad0b81ff2.js" crossorigin="anonymous"></script>
     <title>navbar</title>
 </head>
 
@@ -12,12 +13,41 @@
 
     <!-- TOP-NAV-BAR -->
     <div class="main-menu-wrapper">
-        <ul class="main-menu">
+
+        <!-- Hamburger Icon (visible on mobile only) -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="main-menu" id="mainMenu">
             <li><a href="/index.html" class="main-menu-item">home</a></li>
             <li><a href="/projects.html" class="main-menu-item">projects</a></li>
-            <li><a href="/contact.html" class="main-menu-item">contact</a></li>
+            <li><a href="https://github.com/kabirakabira" class="main-menu-item" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/kabir-jain-241854174/" class="main-menu-item" target="_blank"><i class="fab fa-linkedin"></i></a></li>
         </ul>
     </div>
+
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mainMenu = document.getElementById('mainMenu');
+
+        hamburger.addEventListener('click', function () {
+            mainMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const menuItems = document.querySelectorAll('.main-menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+                mainMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 
