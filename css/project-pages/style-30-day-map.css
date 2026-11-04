@@ -1,0 +1,173 @@
+/* ---------- Page ---------- */
+.page-title {
+  font-family: "Futura";
+  font-weight: 700;
+  font-size: 36px;
+  text-align: center;
+  color: var(--eerieblack);
+  margin: 10px auto 30px;
+}
+
+.page-subtitle {
+  font-family: "Futura";
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: var(--charcoal);
+  margin: 10px auto 30px;
+}
+
+.page-text {
+  font-family: "CourierPrime";
+  font-weight: 400;
+  font-size: 15px;
+  text-align: center;
+  color: var(--charcoal);
+  margin: 10px auto 30px;
+}
+
+/* ---------- Grid: 3 per row on desktop ---------- */
+.map-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: min(90vw, 1300px);
+  margin: 0 auto 60px;
+}
+
+.map-card {
+  border: 2px solid rgba(128, 128, 128, 0.4);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-title {
+  font-family: "Futura";
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--eerieblack);
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.map-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  border: none;
+  background: rgba(128, 128, 128, 0.08);
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.map-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.map-thumb:hover img {
+  transform: scale(1.03);
+}
+
+/* ---------- Mobile: 1 per row ---------- */
+@media only screen and (max-width: 799px) {
+  .map-grid {
+    grid-template-columns: 1fr;
+    width: 90vw;
+  }
+
+  .page-title {
+    font-size: 28px;
+  }
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(20, 20, 20, 0.82);   /* lower the last number to see more of the page */
+}
+
+.lightbox.open {
+  display: block;
+}
+
+.lb-stage {
+  position: absolute;
+  inset: 32px 0 56px 0;       /* 32px clearance at top, room for the control bar at bottom */
+  overflow: hidden;
+  touch-action: none;         /* lets the page handle pinch/drag itself */
+  cursor: zoom-in;
+}
+
+.lb-stage.zoomed {
+  cursor: grab;
+}
+
+.lb-stage.zoomed:active {
+  cursor: grabbing;
+}
+
+#lb-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;            /* size is set from the image's real pixels */
+  transform-origin: 0 0;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lb-caption {
+  position: absolute;
+  left: 16px;
+  bottom: 0;
+  height: 56px;
+  line-height: 56px;
+  margin: 0;
+  font-family: "CourierPrime", monospace;
+  font-size: 14px;
+  color: ivory;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 280px);
+}
+
+.lb-controls {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+.lb-controls button,
+.lb-controls a {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 10px;
+  font-family: "CourierPrime", monospace;
+  font-size: 18px;
+  color: ivory;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.lb-controls button:hover,
+.lb-controls a:hover {
+  background: var(--burntorange);
+}

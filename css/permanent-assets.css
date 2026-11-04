@@ -107,7 +107,15 @@ body {
     transform: rotate(45deg) translate(-6px, -9px);
 }
 
-
+/* Inline text links (e.g. inside card descriptions) */
+.custom-link,
+.custom-link:link,
+.custom-link:visited,
+.custom-link:hover,
+.custom-link:active {
+  color: var(--phthalogreen, #123524);
+  font-weight: 700;
+}
 
 /* For non-mobile screens */
 @media only screen and (min-width: 600px) {

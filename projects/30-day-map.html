@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30 Day Map Challenge - Kabir Jain</title>
+  <link rel="stylesheet" href="/css/permanent-assets.css">
+  <link rel="stylesheet" href="/css/project-pages/style-30-day-map.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+
+  <!-- Insert Navigation Bar -->
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("/resources/navbar.html");
+    });
+  </script>
+
+  <h1 class="page-title">30 day map challenge 2026</h1>
+  <h2 class="page-subtitle">by Kabir Jain</h2>
+
+  <p class="page-text"> a collection of maps made by me using various tools (mostly R and ArcGIS
+  Pro). try clicking on a map. </p>
+
+  <main class="map-grid">
+
+    <div class="map-card">
+      <h2 class="map-title">day 1: points</h2>
+      <button class="map-thumb" type="button">
+        <!-- REPLACE IMAGE SOURCE HERE -->
+        <img src="/resources/project-resources/30-day-map/day01.png" alt="Day 1: Points" loading="lazy">
+      </button>
+    </div>
+
+    <div class="map-card">
+      <h2 class="map-title">day 2: lines</h2>
+      <button class="map-thumb" type="button">
+        <!-- REPLACE IMAGE SOURCE HERE -->
+        <img src="/resources/project-resources/30-day-map/day02.png" alt="Day 2: Lines" loading="lazy">
+      </button>
+    </div>
+
+    <div class="map-card">
+      <h2 class="map-title">day 3: polygons</h2>
+      <button class="map-thumb" type="button">
+        <!-- REPLACE IMAGE SOURCE HERE -->
+        <img src="/resources/project-resources/30-day-map/day03.png" alt="Day 3: Polygons" loading="lazy">
+      </button>
+    </div>
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lb-stage" id="lb-stage">
+      <img id="lb-img" alt="" draggable="false">
+    </div>
+    <p class="lb-caption" id="lb-caption"></p>
+    <div class="lb-controls">
+      <button type="button" id="lb-out" aria-label="Zoom out">&minus;</button>
+      <button type="button" id="lb-reset" aria-label="Fit to screen">fit</button>
+      <button type="button" id="lb-in" aria-label="Zoom in">+</button>
+      <a id="lb-download" href="#" download aria-label="Download image" title="Download image">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12" />
+          <path d="M7 10l5 5 5-5" />
+          <path d="M5 21h14" />
+        </svg>
+      </a>
+      <button type="button" id="lb-close" aria-label="Close">&times;</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const box = document.getElementById("lightbox");
+      const stage = document.getElementById("lb-stage");
+      const img = document.getElementById("lb-img");
+      const caption = document.getElementById("lb-caption");
+      const download = document.getElementById("lb-download");
+
+      let s = 1, x = 0, y = 0;      // current scale and offset
+      let fit = 1, maxS = 4;        // scale that fits the screen, max zoom
+      const pointers = new Map();
+      let lastPinch = null, moved = 0;
+
+      // ---------- open / close ----------
+      document.querySelectorAll(".map-thumb").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const t = btn.querySelector("img");
+          const card = btn.closest(".map-card");
+          open(t.dataset.full || t.src, card.querySelector(".map-title").textContent, t.alt);
+        });
+      });
+
+      function open(src, title, alt) {
+        img.style.visibility = "hidden";
+        img.onload = () => { fitToScreen(); img.style.visibility = "visible"; };
+        img.src = src;
+        img.alt = alt || title;
+        caption.textContent = title;
+        download.href = src;
+        download.setAttribute("download", src.split("/").pop().split("?")[0]);
+        box.classList.add("open");
+        box.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        if (img.complete && img.naturalWidth) img.onload();
+      }
+
+      function close() {
+        box.classList.remove("open");
+        box.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        img.removeAttribute("src");
+      }
+
+      // ---------- zoom / pan math ----------
+      function fitToScreen() {
+        const W = stage.clientWidth, H = stage.clientHeight;
+        const w = img.naturalWidth, h = img.naturalHeight;
+        img.style.width = w + "px";
+        img.style.height = h + "px";
+        fit = Math.min(W / w, H / h, 1);          // never upscale small maps to fit
+        maxS = Math.max(fit * 8, 2);              // up to 8x fit, or 2x native size
+        s = fit;
+        x = (W - w * s) / 2;
+        y = (H - h * s) / 2;
+        apply();
+      }
+
+      function clamp() {
+        const W = stage.clientWidth, H = stage.clientHeight;
+        const w = img.naturalWidth * s, h = img.naturalHeight * s;
+        x = w <= W ? (W - w) / 2 : Math.min(0, Math.max(W - w, x));
+        y = h <= H ? (H - h) / 2 : Math.min(0, Math.max(H - h, y));
+      }
+
+      function apply() {
+        clamp();
+        img.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+        stage.classList.toggle("zoomed", s > fit * 1.01);
+      }
+
+      function zoomAt(factor, cx, cy) {
+        const ns = Math.min(maxS, Math.max(fit, s * factor));
+        x = cx - (cx - x) * (ns / s);
+        y = cy - (cy - y) * (ns / s);
+        s = ns;
+        apply();
+      }
+
+      const center = () => [stage.clientWidth / 2, stage.clientHeight / 2];
+      const local = e => {
+        const r = stage.getBoundingClientRect();
+        return [e.clientX - r.left, e.clientY - r.top];
+      };
+
+      // ---------- mouse wheel / trackpad ----------
+      stage.addEventListener("wheel", e => {
+        e.preventDefault();
+        zoomAt(Math.exp(-e.deltaY * 0.0015), ...local(e));
+      }, { passive: false });
+
+      // ---------- drag to pan, pinch to zoom ----------
+      stage.addEventListener("pointerdown", e => {
+        stage.setPointerCapture(e.pointerId);
+        pointers.set(e.pointerId, local(e));
+        moved = 0;
+        lastPinch = null;
+      });
+
+      stage.addEventListener("pointermove", e => {
+        if (!pointers.has(e.pointerId)) return;
+        const prev = pointers.get(e.pointerId);
+        const cur = local(e);
+        pointers.set(e.pointerId, cur);
+
+        if (pointers.size === 1) {
+          x += cur[0] - prev[0];
+          y += cur[1] - prev[1];
+          moved += Math.abs(cur[0] - prev[0]) + Math.abs(cur[1] - prev[1]);
+          apply();
+        } else if (pointers.size === 2) {
+          const [a, b] = [...pointers.values()];
+          const dist = Math.hypot(a[0] - b[0], a[1] - b[1]);
+          const mid = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+          if (lastPinch) {
+            x += mid[0] - lastPinch.mid[0];
+            y += mid[1] - lastPinch.mid[1];
+            zoomAt(dist / lastPinch.dist, ...mid);
+          }
+          lastPinch = { dist, mid };
+          moved += 10;
+        }
+      });
+
+      function endPointer(e) {
+        pointers.delete(e.pointerId);
+        lastPinch = null;
+        // a click (not a drag) on the dark background closes the lightbox
+        if (e.type === "pointerup" && moved < 5 && e.target === stage) close();
+      }
+      stage.addEventListener("pointerup", endPointer);
+      stage.addEventListener("pointercancel", endPointer);
+
+      // double-click / double-tap: zoom in, or back to fit
+      stage.addEventListener("dblclick", e => {
+        if (s > fit * 1.01) fitToScreen();
+        else zoomAt(3, ...local(e));
+      });
+
+      // ---------- buttons and keys ----------
+      document.getElementById("lb-in").onclick = () => zoomAt(1.5, ...center());
+      document.getElementById("lb-out").onclick = () => zoomAt(1 / 1.5, ...center());
+      document.getElementById("lb-reset").onclick = fitToScreen;
+      document.getElementById("lb-close").onclick = close;
+
+      document.addEventListener("keydown", e => {
+        if (!box.classList.contains("open")) return;
+        if (e.key === "Escape") close();
+        if (e.key === "+" || e.key === "=") zoomAt(1.5, ...center());
+        if (e.key === "-") zoomAt(1 / 1.5, ...center());
+        if (e.key === "0") fitToScreen();
+      });
+
+      window.addEventListener("resize", () => {
+        if (box.classList.contains("open") && img.naturalWidth) fitToScreen();
+      });
+    })();
+  </script>
+
+</body>
+
+</html>
