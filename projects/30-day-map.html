@@ -223,20 +223,30 @@
         }
       });
 
+      // is a point (in stage coordinates) on top of the map image?
+      function onImage(px, py) {
+        return px >= x && px <= x + img.naturalWidth * s &&
+               py >= y && py <= y + img.naturalHeight * s;
+      }
+
       function endPointer(e) {
+        const wasTap = e.type === "pointerup" && moved < 5 && pointers.size === 1;
         pointers.delete(e.pointerId);
         lastPinch = null;
-        // a click (not a drag) on the dark background closes the lightbox
-        if (e.type === "pointerup" && moved < 5 && e.target === stage) close();
+        if (!wasTap) return;                       // drags and pinches do nothing extra
+
+        const [px, py] = local(e);
+        if (onImage(px, py)) {
+          // click on the map: zoom in 2x at that spot; at max zoom, go back to fit
+          if (s >= maxS * 0.999) fitToScreen();
+          else zoomAt(2, px, py);
+        } else {
+          // click on the dark area around the map: close
+          close();
+        }
       }
       stage.addEventListener("pointerup", endPointer);
       stage.addEventListener("pointercancel", endPointer);
-
-      // double-click / double-tap: zoom in, or back to fit
-      stage.addEventListener("dblclick", e => {
-        if (s > fit * 1.01) fitToScreen();
-        else zoomAt(3, ...local(e));
-      });
 
       // ---------- buttons and keys ----------
       document.getElementById("lb-in").onclick = () => zoomAt(1.5, ...center());

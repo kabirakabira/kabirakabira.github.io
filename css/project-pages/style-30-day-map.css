@@ -104,15 +104,7 @@
   inset: 32px 0 56px 0;       /* 32px clearance at top, room for the control bar at bottom */
   overflow: hidden;
   touch-action: none;         /* lets the page handle pinch/drag itself */
-  cursor: zoom-in;
-}
-
-.lb-stage.zoomed {
-  cursor: grab;
-}
-
-.lb-stage.zoomed:active {
-  cursor: grabbing;
+  cursor: pointer;            /* dark area: click to close */
 }
 
 #lb-img {
@@ -123,6 +115,15 @@
   transform-origin: 0 0;
   user-select: none;
   -webkit-user-drag: none;
+  cursor: zoom-in;            /* map: click to zoom */
+}
+
+.lb-stage.zoomed #lb-img {
+  cursor: grab;
+}
+
+.lb-stage.zoomed:active #lb-img {
+  cursor: grabbing;
 }
 
 .lb-caption {
