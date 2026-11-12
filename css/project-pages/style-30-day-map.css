@@ -24,6 +24,7 @@
   text-align: center;
   color: var(--charcoal);
   margin: 10px auto 30px;
+  width: 60vw;
 }
 
 /* ---------- Grid: 3 per row on desktop ---------- */
