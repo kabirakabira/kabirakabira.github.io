@@ -141,6 +141,8 @@
     <div class="lb-stage" id="lb-stage">
       <img id="lb-img" alt="" draggable="false">
     </div>
+    <button type="button" class="lb-nav lb-prev" id="lb-prev" aria-label="Previous map">&#8249;</button>
+    <button type="button" class="lb-nav lb-next" id="lb-next" aria-label="Next map">&#8250;</button>
     <p class="lb-caption" id="lb-caption"></p>
     <div class="lb-controls">
       <button type="button" id="lb-out" aria-label="Zoom out">&minus;</button>
@@ -172,13 +174,22 @@
       let lastPinch = null, moved = 0;
 
       // ---------- open / close ----------
-      document.querySelectorAll(".map-thumb").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const t = btn.querySelector("img");
-          const card = btn.closest(".map-card");
-          open(t.dataset.full || t.src, card.querySelector(".map-title").textContent, t.alt);
-        });
+      // every map on the page, in page order
+      const thumbs = [...document.querySelectorAll(".map-thumb")];
+      let current = 0;
+
+      thumbs.forEach((btn, i) => {
+        btn.addEventListener("click", () => show(i));
       });
+
+      // open the map at position i (wraps around at either end)
+      function show(i) {
+        current = (i + thumbs.length) % thumbs.length;
+        const btn = thumbs[current];
+        const t = btn.querySelector("img");
+        const card = btn.closest(".map-card");
+        open(t.dataset.full || t.src, card.querySelector(".map-title").textContent, t.alt);
+      }
 
       function open(src, title, alt) {
         img.style.visibility = "hidden";
@@ -311,10 +322,14 @@
       document.getElementById("lb-out").onclick = () => zoomAt(1 / 1.5, ...center());
       document.getElementById("lb-reset").onclick = fitToScreen;
       document.getElementById("lb-close").onclick = close;
+      document.getElementById("lb-prev").onclick = () => show(current - 1);
+      document.getElementById("lb-next").onclick = () => show(current + 1);
 
       document.addEventListener("keydown", e => {
         if (!box.classList.contains("open")) return;
         if (e.key === "Escape") close();
+        if (e.key === "ArrowLeft") show(current - 1);
+        if (e.key === "ArrowRight") show(current + 1);
         if (e.key === "+" || e.key === "=") zoomAt(1.5, ...center());
         if (e.key === "-") zoomAt(1 / 1.5, ...center());
         if (e.key === "0") fitToScreen();

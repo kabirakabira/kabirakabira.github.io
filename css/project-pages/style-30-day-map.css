@@ -102,7 +102,7 @@
 
 .lb-stage {
   position: absolute;
-  inset: 32px 0 56px 0;       /* 32px clearance at top, room for the control bar at bottom */
+  inset: 32px 72px 56px 72px; /* top clearance, room for arrows on the sides and the control bar at bottom */
   overflow: hidden;
   touch-action: none;         /* lets the page handle pinch/drag itself */
   cursor: pointer;            /* dark area: click to close */
@@ -125,6 +125,46 @@
 
 .lb-stage.zoomed:active #lb-img {
   cursor: grabbing;
+}
+
+/* previous / next arrows on either side */
+.lb-nav {
+  position: absolute;
+  top: calc(50% - 12px);      /* centred on the map area (stage minus control bar) */
+  transform: translateY(-50%);
+  z-index: 1;                 /* above the map, so clicks don't reach it */
+  width: 48px;
+  height: 72px;
+  padding: 0;
+  font-family: "CourierPrime", monospace;
+  font-size: 40px;
+  line-height: 1;
+  color: ivory;
+  background: rgba(20, 20, 20, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.lb-prev { left: 12px; }
+.lb-next { right: 12px; }
+
+.lb-nav:hover {
+  background: var(--burntorange);
+}
+
+@media only screen and (max-width: 799px) {
+  .lb-nav {
+    width: 36px;
+    height: 56px;
+    font-size: 30px;
+  }
+
+  .lb-prev { left: 6px; }
+  .lb-next { right: 6px; }
+
+  .lb-stage {
+    inset: 32px 0 56px 0;     /* phones: use full width, arrows sit over the map */
+  }
 }
 
 .lb-caption {
